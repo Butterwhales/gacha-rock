@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">gacha-rock</string>
+    <string name="gems">Gems:</string>
+    <string name="gem_count">[Gem Count]</string>
+    <string name="player_lvl">Player Lvl:</string>
+    <string name="store">Store</string>
+    <string name="summons">Summons</string>
+    <string name="settings">Settings</string>
+    <string name="imageDescription">TODO</string>
 </resources>

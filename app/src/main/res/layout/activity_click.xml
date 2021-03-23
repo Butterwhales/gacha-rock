@@ -7,13 +7,56 @@
     tools:context=".click">
 
     <Button
+        android:id="@+id/resetView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="click"
+        android:text="@string/reset_button_text"
+        app:layout_constraintBottom_toTopOf="@+id/clickerButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outputTV" />
+
+    <ImageButton
+        android:id="@+id/clickerButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="110dp"
+        android:layout_weight="1"
+        android:focusable="true"
+        android:onClick="click"
+        android:scaleType="fitCenter"
+        android:src="@drawable/rock_chan"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resetView"
+        tools:srcCompat="@drawable/rock_chan" />
+
+    <TextView
+        android:id="@+id/outputTV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="48dp"
+        android:layout_weight="1"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="66sp"
+        app:layout_constraintBottom_toTopOf="@+id/resetView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
         android:layout_marginBottom="17dp"
-        android:layout_marginStart="18dp"
         android:onClick="backClick"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clickerButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

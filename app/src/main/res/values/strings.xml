@@ -6,5 +6,10 @@
     <string name="store">Store</string>
     <string name="summons">Summons</string>
     <string name="settings">Settings</string>
-    <string name="imageDescription">rock</string>
+    <string name="imageDescription">TODO</string>
+
+    //Local Strings
+    <string name="click_button_text">Click Me!</string>
+    <string name="reset_button_text">Reset</string>
+    <string name="_0" translatable="false">0</string>
 </resources>

@@ -43,14 +43,17 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
         android:contentDescription="@string/imageDescription"
         android:onClick="clickerClick"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/rock_chan"
+        tools:srcCompat="@drawable/rock_chan" />
 
     <ProgressBar
         android:id="@+id/progressBar"

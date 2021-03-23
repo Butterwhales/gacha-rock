@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gacharock">
+        <activity android:name=".store"></activity>
+        <activity android:name=".click" />
+        <activity android:name=".settings" />
+        <activity android:name=".inventory" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

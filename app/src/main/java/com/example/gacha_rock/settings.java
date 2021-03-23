@@ -15,6 +15,6 @@ public class settings extends AppCompatActivity {
     }
 
     public void backClick(View view) {
-        startActivity(new Intent(click.this, MainActivity.class));
+        startActivity(new Intent(settings.this, MainActivity.class));
     }
 }

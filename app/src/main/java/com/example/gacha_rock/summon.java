@@ -18,6 +18,6 @@ public class summon extends AppCompatActivity {
     }
 
     public void backClick(View view) {
-        startActivity(new Intent(click.this, MainActivity.class));
+        startActivity(new Intent(summon.this, MainActivity.class));
     }
 }

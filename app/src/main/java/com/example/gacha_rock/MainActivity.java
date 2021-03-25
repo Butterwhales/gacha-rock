@@ -19,6 +19,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, click.class));
     }
 
+    public void inventoryClick(View view) {
+        startActivity(new Intent(MainActivity.this, inventory.class));
+    }
+
     public void storeClick(View view) {
         startActivity(new Intent(MainActivity.this, store.class));
     }

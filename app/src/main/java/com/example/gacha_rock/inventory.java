@@ -14,6 +14,8 @@ public class inventory extends AppCompatActivity {
         setContentView(R.layout.activity_inventory);
     }
 
+
+
     public void backClick(View view) {
         startActivity(new Intent(inventory.this, MainActivity.class));
     }

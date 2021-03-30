@@ -13,4 +13,7 @@
     <string name="_0" translatable="false">0</string>
     <string name="rock_collection_button">Rock Collection</string>
     <string name="back_button">Back</string>
+
+    <string name="summon_single">Summon 1x</string>
+    <string name="summon_multi">Summon 10x</string>
 </resources>

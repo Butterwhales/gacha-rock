@@ -18,6 +18,10 @@
     <string name="summon_multi">Mine 10x</string>
 
     <string name="settings">Settings</string>
+    <string name="dev_settings">Dev Settings</string>
     <string name="audio_setting">Audio ON/OFF</string>
     <string name="dark_mode_setting">Dark Mode ON/OFF</string>
+    <string name="dev_mode">Dev Mode ON/OFF</string>
+    <string name="infinite_loot">Infinite Loot Boxes ON/OFF</string>
+    <string name="everything_free">Everything is Free ON/OFF</string>
 </resources>

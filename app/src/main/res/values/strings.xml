@@ -14,6 +14,10 @@
     <string name="rock_collection_button">Rock Collection</string>
     <string name="back_button">Back</string>
 
-    <string name="summon_single">Summon 1x</string>
-    <string name="summon_multi">Summon 10x</string>
+    <string name="summon_single">Mine 1x</string>
+    <string name="summon_multi">Mine 10x</string>
+
+    <string name="settings">Settings</string>
+    <string name="audio_setting">Audio ON/OFF</string>
+    <string name="dark_mode_setting">Dark Mode ON/OFF</string>
 </resources>

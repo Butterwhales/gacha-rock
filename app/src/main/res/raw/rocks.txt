@@ -1,4 +1,2 @@
-Pebble:
-Stone:
-Boulder:
-Mountain:
+0 | Cobblestone | 0 | 0.0 | Description
+1 | Rock Warbler | 0 | 0.0 |

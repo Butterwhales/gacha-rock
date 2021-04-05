@@ -17,6 +17,17 @@ public class summon extends AppCompatActivity {
         rarity.addEntry("Rock", 0.1);
     }
 
+
+    /**The Plan:
+     * click 4 times to open loot box
+     *
+     *
+     */
+
+
+
+
+
     public void backClick(View view) {
         startActivity(new Intent(summon.this, MainActivity.class));
     }

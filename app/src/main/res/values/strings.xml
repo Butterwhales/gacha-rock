@@ -7,6 +7,7 @@
     <string name="summons_button">Summons</string>
     <string name="settings_button">Settings</string>
     <string name="imageDescription">TODO</string>
+    <string name="back">Back</string>
 
     <string name="click_button_text">Click Me!</string>
     <string name="reset_button_text">Reset</string>

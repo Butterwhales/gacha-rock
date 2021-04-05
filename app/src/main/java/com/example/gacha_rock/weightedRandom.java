@@ -1,17 +1,18 @@
 package com.example.gacha_rock;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 // Robust weighted collection based off https://gamedev.stackexchange.com/a/162987
 
-public class weightedRandom<randObject extends Object>{
+public class weightedRandom<randObject extends Object> {
     private class Entry {
         double accumulatedWeight;
         randObject object;
     }
 
-    private List<Entry> entries  = new ArrayList<>();
+    private List<Entry> entries = new ArrayList<>();
     private double accumulatedWeight;
     private Random rand = new Random();
 

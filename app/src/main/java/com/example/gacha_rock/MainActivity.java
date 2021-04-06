@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,13 +23,18 @@ public class MainActivity extends AppCompatActivity {
     private TextView tv;
     /** Reference to the clicks per second text viewc */
 
+    private ImageView featuredRock;
 
+    private int fingerCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv = findViewById(R.id.clickCount);
+        featuredRock = findViewById(R.id.featuredRock);
+
+
 
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         count = prefs.getInt(SCORE_PREF, count);
@@ -37,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
             String scoreMcScoreFace = "%d", count;
             tv.setText(scoreMcScoreFace);
         }
+        // multitouch
+        featuredRock.setOnTouchListener(fingerCounterListener);
         updateDisplay();
 
     }
@@ -52,7 +62,41 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    public void click(View view){
+
+    private final View.OnTouchListener fingerCounterListener = new View.OnTouchListener(){
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            if(count < 0){
+                count = 0;
+            }
+            if(fingerCount < 0){
+                fingerCount = 0;
+            }
+            switch(event.getActionMasked()){
+                case MotionEvent.ACTION_DOWN:
+                    fingerCount +=1;
+                    count += 1;
+                    break;
+                case MotionEvent.ACTION_POINTER_DOWN:
+                    count += 1;
+                    fingerCount +=1;
+                    break;
+                case MotionEvent.ACTION_POINTER_UP:
+                    fingerCount -= 1;
+                    break;
+                case MotionEvent.ACTION_UP:
+                    fingerCount = 0;
+                    break;
+
+            }
+            updateDisplay();
+
+            return true;
+        }
+    };
+
+  /*  public void click(View view){
 
         int id = view.getId();
          if(id == R.id.featuredRock){
@@ -66,7 +110,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Take the count value and update the textview
         updateDisplay();
-    }
+    } */
+
+
 
 
 

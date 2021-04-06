@@ -52,16 +52,14 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/featuredRock"
-        style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="242dp"
         android:adjustViewBounds="false"
         android:clickable="true"
         android:contentDescription="@string/imageDescription"
-        android:onClick="click"
         android:scaleType="fitCenter"
         android:src="@drawable/rock_chan"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -119,6 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="116dp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/featuredRock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

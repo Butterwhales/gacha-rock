@@ -17,10 +17,13 @@ public class MainActivity extends AppCompatActivity {
     private static final String PREFS_NAME = "com.example.gacha_rock.prefs";
 
     private static final String SCORE_PREF = "scorePref";
+    private static final String GEMS_PREF = "gemsPref";
     /** Number of times clicker has been clicked */
     private int count = 0;
+    private int count2 = 0;
     /** Reference to output text view */
     private TextView tv;
+    private TextView gemText;
     /** Reference to the clicks per second text viewc */
 
     private ImageView featuredRock;
@@ -32,18 +35,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv = findViewById(R.id.clickCount);
+        gemText = findViewById(R.id.gemCount);
         featuredRock = findViewById(R.id.featuredRock);
 
 
 
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         count = prefs.getInt(SCORE_PREF, count);
-
+        count2 = prefs.getInt(GEMS_PREF, count2);
         System.out.println("Hey you");
 
         if(count > 0){
             String scoreMcScoreFace = "%d", count;
             tv.setText(scoreMcScoreFace);
+            gemText.setText(String.valueOf(count2));
         }
         // multitouch
         featuredRock.setOnTouchListener(fingerCounterListener);
@@ -57,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-
+        editor.putInt(GEMS_PREF, count2);
         editor.putInt(SCORE_PREF, count);
         editor.apply();
     }

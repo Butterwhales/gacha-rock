@@ -28,11 +28,18 @@ public class rockObject<rockObject> {
      * @param description Rock Description
      */
     public void addEntry(int id, rockObject object, double rarityOverall, double rarity, String description) {
-        if (rocks.contains(object)) {
-            rocks.get(rocks.indexOf(object)).amount += 1;
-        } else {
+        boolean isThere = false;
+        for (Rock rock : rocks) {
+            if (rock.object.equals(object)) {
+                isThere = true;
+                rock.amount += 1;
+            }
+        }
+
+        if (!isThere) {
             Rock rock = new Rock();
             rock.id = id;
+            rock.amount = 1;
             rock.object = object;
             rock.rarity = rarity;
             rock.rarityOverall = rarityOverall;
@@ -58,7 +65,7 @@ public class rockObject<rockObject> {
      */
     public int getId(String name) {
         for (Rock rock : rocks) {
-            if (((String) rock.object).equals(name)) return rock.id;
+            if (rock.object.equals(name)) return rock.id;
         }
         return -1;
     }
@@ -116,15 +123,39 @@ public class rockObject<rockObject> {
     }
 
     /**
+     * Get amount of rocks in array
+     *
+     * @return Amount of rocks in array
+     */
+    public int getNumRocks() {
+        return rocks.size();
+    }
+
+    /**
+     * Get amount of rocks in array
+     *
+     * @return Amount of rocks in array
+     */
+    public int getRockAmount(int id) {
+        for (Rock rock : rocks) {
+            if (rock.id == id) return rock.amount;
+        }
+        return -1;
+    }
+
+    /**
      * WIP - doesn't work
      * Writes all owned rocks to file
      */
     public void writeAll() throws IOException {
-        OutputStream stream = new FileOutputStream("./src/main/res/raw/rocks_owned"); //TODO: find a way to us a raw resource id instead or find the right filepath
+        OutputStream stream = new FileOutputStream("com.example.gacha_rock.res.raw.rocks_owned.txt"); //TODO: find a way to us a raw resource id instead or find the right filepath
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(stream));
         rocks.forEach(object -> {
             try {
-                bw.write(rocks.get(rocks.indexOf(object)).id + " | " + rocks.get(rocks.indexOf(object)).amount);
+                for (int i = 0; i < rocks.get(rocks.indexOf(object)).amount; i++) {
+
+                    bw.append((char) rocks.get(rocks.indexOf(object)).id);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

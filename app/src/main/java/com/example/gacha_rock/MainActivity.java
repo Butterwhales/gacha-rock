@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         // multitouch
         featuredRock.setOnTouchListener(fingerCounterListener);
         updateDisplay();
-
     }
 
     @Override

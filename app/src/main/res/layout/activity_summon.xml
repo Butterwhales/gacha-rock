@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="backClick"
+    android:onClick="mine10"
     tools:context=".summon">
 
     <Button
@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
         android:layout_marginTop="27dp"
+        android:onClick="mine1"
         android:text="@string/summon_single"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -32,8 +33,9 @@
         android:id="@+id/button11"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
         android:layout_marginEnd="66dp"
+        android:layout_marginTop="27dp"
+        android:onClick="mine10"
         android:text="@string/summon_multi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -42,8 +44,8 @@
         android:id="@+id/imageView2"
         android:layout_width="290dp"
         android:layout_height="316dp"
-        android:layout_marginTop="131dp"
         android:layout_marginEnd="66dp"
+        android:layout_marginTop="131dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/summon_pick"

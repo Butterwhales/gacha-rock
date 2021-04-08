@@ -19,7 +19,6 @@ import androidx.gridlayout.widget.GridLayout;
 public class inventory extends AppCompatActivity {
     public rockObject<String> rocksOwned = new rockObject<>();
     public rockObject<String> rocks = new rockObject<>();
-    weightedRandom<String> rarity = new weightedRandom<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,33 +66,6 @@ public class inventory extends AppCompatActivity {
         for (int i = 0; i < rocksOwned.getNumRocks(); i++) {
             grid.addView(makeView(rocksOwned.getName(i), String.valueOf(rocksOwned.getRockAmount(i))));
         }
-        for (int i = 0; i < rocks.getNumRocks(); i++) {
-            double overallRarity = rocks.getRarity(i);
-            switch ((int) rocks.getRarityOverall(i)) {
-                case 0:
-                    overallRarity += 10.0;
-                    break;
-                case 1:
-                    overallRarity += 5.0;
-                    break;
-                case 2:
-                    overallRarity += 3.0;
-                    break;
-                case 3:
-                    overallRarity += 2.0;
-                    break;
-                case 4:
-                    overallRarity += 1.0;
-                    break;
-            }
-
-            rarity.addEntry(String.valueOf(i), overallRarity);
-        }
-        for (int i = 0; i < 5; i++) {
-            int rockId = Integer.parseInt(rarity.getRandom());
-            System.out.println("rock id: " + rockId);
-            grid.addView(makeView(rocks.getName(rockId), String.valueOf(rocks.getRockAmount(rockId))));
-        }
     }
 
     private TextView makeView(String number, String amount) {
@@ -105,12 +77,8 @@ public class inventory extends AppCompatActivity {
         return view;
     }
 
-    private void close() throws IOException {
-        rocks.writeAll();
-    }
-
     public void backClick(View view) throws IOException {
         startActivity(new Intent(inventory.this, MainActivity.class));
-        // close(); //Doesn't work
+        // rocks.writeAll(); //Doesn't work
     }
 }

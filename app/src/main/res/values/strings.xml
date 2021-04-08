@@ -25,4 +25,6 @@
     <string name="dev_mode">Dev Mode ON/OFF</string>
     <string name="infinite_loot">Infinite Loot Boxes ON/OFF</string>
     <string name="everything_free">Everything is Free ON/OFF</string>
+
+    <string name="shop">Shop</string>
 </resources>

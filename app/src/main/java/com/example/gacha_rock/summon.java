@@ -1,7 +1,5 @@
 package com.example.gacha_rock;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +10,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class summon extends AppCompatActivity {
     public rockObject<String> rocksOwned = new rockObject<>();
     public rockObject<String> rocks = new rockObject<>();
@@ -21,18 +21,22 @@ public class summon extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summon);
-        try { setup(); } catch (IOException e) { e.printStackTrace(); }
+        try {
+            setup();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         rarity.addEntry("Rock", 0.1);
     }
 
 
-    /**The Plan:
+    /**
+     * The Plan:
      * click 4 times to open loot box
-     *
-     *
      */
 
     private void setup() throws IOException {
+
         InputStream stream = getResources().openRawResource(R.raw.rocks);
         BufferedReader br = new BufferedReader(new InputStreamReader(stream));
         String description = " ";
@@ -59,15 +63,15 @@ public class summon extends AppCompatActivity {
         br.close();
     }
 
-    public void mine1(View view){
+    public void mine1(View view) throws IOException {
         roll(1);
     }
 
-    public void mine10(View view){
+    public void mine10(View view) throws IOException {
         roll(10);
     }
 
-    private void roll(int count) {
+    private void roll(int count) throws IOException {
         for (int i = 0; i < rocks.getNumRocks(); i++) {
             double overallRarity = rocks.getRarity(i);
             switch ((int) rocks.getRarityOverall(i)) {
@@ -92,12 +96,12 @@ public class summon extends AppCompatActivity {
         }
         for (int i = 0; i < count; i++) {
             int rockId = Integer.parseInt(rarity.getRandom());
-            System.out.println("rock id: " + rockId + "rock name: " + rocks.getName(rockId));
+            System.out.println("rock id: " + rockId + " rock name: " + rocks.getName(rockId));
+            rocksOwned.addEntry(rockId, rocks.getName(rockId), rocks.getRarity(rockId), rocks.getRarityOverall(rockId), rocks.getDescription(rockId));
             //grid.addView(makeView(rocks.getName(rockId), String.valueOf(rocks.getRockAmount(rockId))));
         }
+        rocksOwned.writeAll();
     }
-
-
 
     public void backClick(View view) {
         startActivity(new Intent(summon.this, MainActivity.class));

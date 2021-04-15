@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -41,22 +43,27 @@ public class inventory extends AppCompatActivity {
         while (br.ready()) {
             String[] e = br.readLine().split(" \\| ");
             System.out.println(Arrays.toString(e));
-
             if (e.length == 4) {
                 description = " ";
                 e[3] = e[3].replace(" |", "");
             } else
                 description = e[4];
-
             rocks.addEntry(Integer.parseInt(e[0]), e[1], Double.parseDouble(e[2]), Double.parseDouble(e[3]), description);
         }
+        stream.close();
         br.close();
 
-        stream = getResources().openRawResource(R.raw.rocks_owned);
-        br = new BufferedReader(new InputStreamReader(stream));
-        while (br.ready()) {
-            int e = Integer.parseInt(br.readLine());
-            rocksOwned.addEntry(e, rocks.getName(e), rocks.getRarity(e), rocks.getRarityOverall(e), rocks.getDescription(e));
+        String File = "rocks_owned.txt";
+        String path = getApplicationContext().getFilesDir().getPath();
+        br = new BufferedReader(new InputStreamReader(new FileInputStream(path + "/" + File)));
+        String line;
+        System.out.println("Test");
+        System.out.println(path + "/" + File);
+        while ((line = br.readLine()) != null) {
+            System.out.println(line + "        hello");
+//            int e = Integer.parseInt(line);
+//            System.out.println(e);
+//            rocksOwned.addEntry(e, rocks.getName(e), rocks.getRarity(e), rocks.getRarityOverall(e), rocks.getDescription(e));
         }
         br.close();
     }

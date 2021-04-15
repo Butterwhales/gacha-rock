@@ -102,9 +102,8 @@ public class summon extends AppCompatActivity {
         }
         for (int i = 0; i < count; i++) {
             int rockId = Integer.parseInt(rarity.getRandom());
-            System.out.println("rock id: " + rockId + " rock name: " + rocks.getName(rockId));
+            System.out.println("rock id: " + rockId + " rock name: " + rocks.getName(rockId) + " Count: " + count);
             rocksOwned.addEntry(rockId, rocks.getName(rockId), rocks.getRarity(rockId), rocks.getRarityOverall(rockId), rocks.getDescription(rockId));
-            //grid.addView(makeView(rocks.getName(rockId), String.valueOf(rocks.getRockAmount(rockId))));
         }
         rocksOwned.writeAll();
     }

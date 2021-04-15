@@ -30,9 +30,10 @@ public class rockObject<rockObject> {
     public void addEntry(int id, rockObject object, double rarityOverall, double rarity, String description) {
         boolean isThere = false;
         for (Rock rock : rocks) {
-            if (rock.object.equals(object)) {
+            if (rock.id == id) {
                 isThere = true;
                 rock.amount += 1;
+                System.out.println(rock.object +": " + rock.amount);
             }
         }
 
@@ -138,7 +139,10 @@ public class rockObject<rockObject> {
      */
     public int getRockAmount(int id) {
         for (Rock rock : rocks) {
-            if (rock.id == id) return rock.amount;
+            if (rock.id == id) {
+                //System.out.println(rock.id + ": " + rock.amount);
+                return rock.amount;
+            }
         }
         return -1;
     }
@@ -160,10 +164,11 @@ public class rockObject<rockObject> {
         String path = MyApplication.getContext().getFilesDir().getPath();
         //TODO: find a way to us a raw resource id instead or find the right filepath
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path + "/" + File), StandardCharsets.UTF_8));
-        rocks.forEach(object -> {
-            for (int i = 0; i < rocks.size()-1; i++) {
+        rocks.forEach(rock -> {
+            for (int i = 0; i < rock.amount; i++) {
                 try {
-                    bw.write(rocks.get(rocks.indexOf(object)).id + "\n");
+                    bw.write(rocks.get(rocks.indexOf(rock)).id + "\n");
+                    //System.out.println("wrote: " + rocks.get(rocks.indexOf(rock)).id);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

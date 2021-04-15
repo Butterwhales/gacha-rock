@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -91,7 +89,7 @@ public class inventory extends AppCompatActivity {
         layout.addView(textView);
 
         ImageView imageView = new ImageView(this.getApplicationContext());
-        Drawable rockDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.rock_chan_icon, getApplicationContext().getTheme());
+        Drawable rockDrawable = ResourcesCompat.getDrawable(getResources(), getDrawableFromId(number), getApplicationContext().getTheme());
         imageView.setImageDrawable(rockDrawable);
         imageView.setMaxHeight(100);
         layout.addView(imageView);
@@ -105,6 +103,13 @@ public class inventory extends AppCompatActivity {
         layout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         layout.setHorizontalGravity(Gravity.CENTER_HORIZONTAL);
         return layout;
+    }
+
+    public int getDrawableFromId(String id) {
+        String name = id.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "_") + "_icon";
+        int resourceId = getApplicationContext().getResources().getIdentifier(name, "drawable", getApplicationContext().getPackageName());
+        if (resourceId == 0) resourceId = getApplicationContext().getResources().getIdentifier("rock_chan_icon", "drawable", getApplicationContext().getPackageName());
+        return resourceId;
     }
 
     public void backClick(View view) throws IOException {

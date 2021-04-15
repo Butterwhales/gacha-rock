@@ -1,33 +1,34 @@
-0 | "Brown Rock" | 0 | 0.0 | Smells funny
-1 | Cobblestone | 0 | 0.0 |
-2 | Fools Gold | 0 | 0.0 | Pyrite
-3 | Granite | 0 | 0.0 |
-4 | Rock Snek | 1 | 0.0 | ssssssssssss
-5 | Rock Warbler | 1 | 0.0 |
-6 | Crack rock | 3 | 0.0 | Almost as addicting as this game!
-7 | The Terraria Boulder | 3 | 0.0 | Being hit for 480 points of damage has never been so fun!
-8 | Chris Rock | 4 | 0.0 |
-9 | Danny | 4 | 0.0 | Danny Devitos face on a rock
-10 | David Spade | 4 | 0.0 | Legendary Miner
-11 | Dinosaur Fossils | 4 | 0.0 |
-12 | DIOrite | 4 | 0.0 |
-13 | Elvis the King of Rock | 4 | 0.0 | "Thank you. Thank you very much."
-14 | Iron Golem | 4 | 0.0 | Minecraft
-15 | Kid Rock | 4 | 0.0 |
-16 | Korg | 4 | 0.0 |
-17 | Neil Diamond | 4 | 0.0 | The legendary artist behind such songs as "Love on the Rocks".
-18 | Rock Astley | 4 | 0.0 | Never gonna give you up!
-19 | Rock Chan | 4 | 0.0 |
-20 | Rock Lee | 4 | 0.0 |
-21 | Rock Lesner | 4 | 0.0 |
-22 | Rocky Balboa | 4 | 0.0 |
-23 | Shungite | 4 | 0.0 | stops 5G
-24 | Sips.co Dirt | 4 | 0.0 | "Big money, big women, big fun!"
-25 | Slate-X Rocket | 4 | 0.0 |
-26 | Sparkle | 4 | 0.0 | Gabe found a geode at a summer camp when he was like 10. Its name is Sparkle
-27 | The Iron Lady | 4 | 0.0 | Margaret Thatcher
-28 | The Nope Diamond | 4 | 0.0 | Nope
-29 | The Rock | 4 | 0.0 | Some asssembly required
-30 | Obsidian | 0 | 0.0 | "10 blocks is the magical total"
-31 | Bedrock | 3 | 0.0 | The hardest known substance in the universe
-32 | Rocky Road | 1 | 0.0 | More of a soup than ice cream.
+0 | "Brown Rock" | 0 | 0.0 | Smells funny |
+1 | Cobblestone | 0 | 0.0 | A collection of smaller stones |
+2 | Fools Gold | 0 | 0.0 | Pyrite |
+3 | Granite | 0 | 0.0 | Dont take this rock for granite |
+4 | Obsidian | 1 | 0.0 | "10 blocks is the magical total" |
+5 | Rock Bear | 2 | 0.0 | An metamorphic force of nature |
+6 | Rock Snek | 2 | 0.0 | ssssssssssss |
+7 | Rock Warbler | 2 | 0.0 | tweet tweet |
+8 | Rocky Road | 2 | 0.0 | More of a soup than ice cream. |
+9 | Bedrock | 3 | 0.0 | The hardest known substance in the universe | finished
+10 | Crack rock | 3 | 0.0 | Almost as addicting as this game! |
+11 | Iron Golem | 3 | 0.0 | Minecraft | finished
+12 | Korg | 3 | 0.0 |  |
+13 | Sparkle | 3 | 0.0 | Gabe found a geode at a summer camp when he was like 10. Its name is Sparkle | gabe
+14 | The Iron Lady | 3 | 0.0 | Ding dong the witch is dead | gabe
+15 | The Terraria Boulder | 3 | 0.0 | Being hit for 480 points of damage has never been so fun! | finished
+16 | Chris Rock | 4 | 0.0 |  |
+17 | Danny | 4 | 0.0 | Danny Devitos face on a rock | finished
+18 | David Spade | 4 | 0.0 | Legendary Miner |
+19 | Dinosaur Fossils | 4 | 0.0 | A.K.A Queen Elizabeth |
+20 | DIOrite | 4 | 0.0 | Kono Dio Da! | finished
+21 | Elvis the King of Rock | 4 | 0.0 | "Thank you. Thank you very much." |
+22 | Kid Rock | 4 | 0.0 | "you want a wahburger and french cries?" |
+23 | Neil Diamond | 4 | 0.0 | The legendary artist behind such songs as "Love on the Rocks". |
+24 | Rock Astley | 4 | 0.0 | Never gonna give you up! | finished
+25 | Rock Chan | 4 | 0.0 | UwU | finished
+26 | Rock Lee | 4 | 0.0 | Pray he doesnt open the 5th hgate | finished
+27 | Rock Lesnar | 4 | 0.0 |  |
+28 | Rocky Balboa | 4 | 0.0 | "YO ADRIEN" | gabe
+29 | Shungite | 4 | 0.0 | stops 5G |
+30 | Sips.co Dirt | 4 | 0.0 | "Big money, big women, big fun!" | finished
+31 | Slate-X Rocket | 4 | 0.0 | WenHop |
+32 | The Nope Diamond | 4 | 0.0 | Nope | gabe
+33 | The Rock | 4 | 0.0 | Some asssembly required |

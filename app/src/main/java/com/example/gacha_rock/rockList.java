@@ -31,13 +31,13 @@ public class rockList extends AppCompatActivity {
         }
         br.close();
 
-        stream = getResources().openRawResource(R.raw.rocks_owned);
-        br = new BufferedReader(new InputStreamReader(stream));
-        while (br.ready()) {
-            int e = Integer.parseInt(br.readLine());
-            rocksOwned.addEntry(e, rocks.getName(e), rocks.getRarity(e), rocks.getRarityOverall(e), rocks.getDescription(e));
-        }
-        br.close();
+        //stream = getResources().openRawResource(R.raw.rocks_owned);
+        //br = new BufferedReader(new InputStreamReader(stream));
+        //while (br.ready()) {
+        //    int e = Integer.parseInt(br.readLine());
+         //   rocksOwned.addEntry(e, rocks.getName(e), rocks.getRarity(e), rocks.getRarityOverall(e), rocks.getDescription(e));
+        //}
+        //br.close();
     }
 
     /**

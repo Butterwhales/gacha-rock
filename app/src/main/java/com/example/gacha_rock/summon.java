@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,12 +54,16 @@ public class summon extends AppCompatActivity {
 
             rocks.addEntry(Integer.parseInt(e[0]), e[1], Double.parseDouble(e[2]), Double.parseDouble(e[3]), description);
         }
+        stream.close();
         br.close();
 
-        stream = getResources().openRawResource(R.raw.rocks_owned);
-        br = new BufferedReader(new InputStreamReader(stream));
-        while (br.ready()) {
-            int e = Integer.parseInt(br.readLine());
+        String File = "rocks_owned.txt";
+        String path = getApplicationContext().getFilesDir().getPath();
+        br = new BufferedReader(new InputStreamReader(new FileInputStream(path + "/" + File), StandardCharsets.UTF_8));
+        String line;
+        while ((line = br.readLine()) != null) {
+            int e = Integer.parseInt(line);
+            //System.out.println(e);
             rocksOwned.addEntry(e, rocks.getName(e), rocks.getRarity(e), rocks.getRarityOverall(e), rocks.getDescription(e));
         }
         br.close();

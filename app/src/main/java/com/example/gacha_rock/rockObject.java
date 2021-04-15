@@ -1,8 +1,12 @@
 package com.example.gacha_rock;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class rockObject<rockObject> {
@@ -147,18 +151,26 @@ public class rockObject<rockObject> {
      */
     public void writeAll() throws IOException {
         String File = "rocks_owned.txt";
-        String path = MyApplication.getContext().getFilesDir().getAbsolutePath();
+        String path = MyApplication.getContext().getFilesDir().getPath();
         //TODO: find a way to us a raw resource id instead or find the right filepath
-        BufferedWriter bw = new BufferedWriter(new FileWriter(path + "/" + File));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path + "/" + File), StandardCharsets.UTF_8));
         rocks.forEach(object -> {
             for (int i = 0; i < rocks.get(rocks.indexOf(object)).amount; i++) {
                 try {
-                    bw.write((char) rocks.get(rocks.indexOf(object)).id);
+                    bw.write(rocks.get(rocks.indexOf(object)).id + "\n");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         });
+        bw.close();
+    }
+    public void clearAll() throws IOException {
+        String File = "rocks_owned.txt";
+        String path = MyApplication.getContext().getFilesDir().getPath();
+        //TODO: find a way to us a raw resource id instead or find the right filepath
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path + "/" + File), StandardCharsets.UTF_8));
+        bw.write("");
         bw.close();
     }
 }

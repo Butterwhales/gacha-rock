@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,7 +43,7 @@ public class inventory extends AppCompatActivity {
         String description = " ";
         while (br.ready()) {
             String[] e = br.readLine().split(" \\| ");
-            System.out.println(Arrays.toString(e));
+            //System.out.println(Arrays.toString(e));
             if (e.length == 4) {
                 description = " ";
                 e[3] = e[3].replace(" |", "");
@@ -55,15 +56,12 @@ public class inventory extends AppCompatActivity {
 
         String File = "rocks_owned.txt";
         String path = getApplicationContext().getFilesDir().getPath();
-        br = new BufferedReader(new InputStreamReader(new FileInputStream(path + "/" + File)));
+        br = new BufferedReader(new InputStreamReader(new FileInputStream(path + "/" + File), StandardCharsets.UTF_8));
         String line;
-        System.out.println("Test");
-        System.out.println(path + "/" + File);
         while ((line = br.readLine()) != null) {
-            System.out.println(line + "        hello");
-//            int e = Integer.parseInt(line);
-//            System.out.println(e);
-//            rocksOwned.addEntry(e, rocks.getName(e), rocks.getRarity(e), rocks.getRarityOverall(e), rocks.getDescription(e));
+            int e = Integer.parseInt(line);
+            //System.out.println(e);
+            rocksOwned.addEntry(e, rocks.getName(e), rocks.getRarity(e), rocks.getRarityOverall(e), rocks.getDescription(e));
         }
         br.close();
     }
@@ -86,6 +84,6 @@ public class inventory extends AppCompatActivity {
 
     public void backClick(View view) throws IOException {
         startActivity(new Intent(inventory.this, MainActivity.class));
-        // rocks.writeAll(); //Doesn't work
+        rocksOwned.writeAll(); //Doesn't work
     }
 }

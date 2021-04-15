@@ -55,6 +55,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(GEMS_PREF, gemCount);
+        editor.putInt(GOLD_PREF, goldCount);
+        editor.apply();
+    }
+
+
     private final View.OnTouchListener fingerCounterListener = new View.OnTouchListener(){
 
         @Override

@@ -155,7 +155,7 @@ public class rockObject<rockObject> {
         //TODO: find a way to us a raw resource id instead or find the right filepath
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path + "/" + File), StandardCharsets.UTF_8));
         rocks.forEach(object -> {
-            for (int i = 0; i < rocks.get(rocks.indexOf(object)).amount; i++) {
+            for (int i = 0; i < rocks.size()-1; i++) {
                 try {
                     bw.write(rocks.get(rocks.indexOf(object)).id + "\n");
                 } catch (IOException e) {

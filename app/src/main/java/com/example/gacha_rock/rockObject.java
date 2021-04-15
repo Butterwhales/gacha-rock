@@ -1,9 +1,7 @@
 package com.example.gacha_rock;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
@@ -143,6 +141,14 @@ public class rockObject<rockObject> {
             if (rock.id == id) return rock.amount;
         }
         return -1;
+    }
+
+    public ArrayList getAllRocksIds(){
+        ArrayList<Integer> ids = new ArrayList<>();
+        rocks.forEach(object -> {
+            ids.add(rocks.get(rocks.indexOf(object)).id);
+        });
+        return ids;
     }
 
     /**

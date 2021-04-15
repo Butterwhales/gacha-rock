@@ -9,12 +9,11 @@ import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.gridlayout.widget.GridLayout;
@@ -60,7 +59,7 @@ public class inventory extends AppCompatActivity {
         String line;
         while ((line = br.readLine()) != null) {
             int e = Integer.parseInt(line);
-            //System.out.println(e);
+            System.out.println(rocks.getName(e));
             rocksOwned.addEntry(e, rocks.getName(e), rocks.getRarity(e), rocks.getRarityOverall(e), rocks.getDescription(e));
         }
         br.close();
@@ -68,9 +67,10 @@ public class inventory extends AppCompatActivity {
 
     private void buildGrid() {
         GridLayout grid = findViewById(R.id.grid);
-        for (int i = 0; i < rocksOwned.getNumRocks(); i++) {
-            grid.addView(makeView(rocksOwned.getName(i), String.valueOf(rocksOwned.getRockAmount(i))));
-        }
+        ArrayList<Integer> ids = rocksOwned.getAllRocksIds();
+        ids.forEach(id -> {
+            grid.addView(makeView(rocksOwned.getName(id), String.valueOf(rocksOwned.getRockAmount(id))));
+        });
     }
 
     private TextView makeView(String number, String amount) {

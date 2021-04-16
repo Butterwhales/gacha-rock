@@ -27,4 +27,6 @@
     <string name="everything_free">Everything is Free ON/OFF</string>
 
     <string name="shop">Shop</string>
+    <string name="player_lvl_num">00</string>
+    <string name="gold_count">[Gold Count]</string>
 </resources>

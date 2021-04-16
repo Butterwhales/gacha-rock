@@ -49,15 +49,6 @@ public class rockObject<rockObject> {
         }
     }
 
-    //TODO: figure out what to return for getPicture
-
-    /**
-     * Get picture id
-     */
-    public void getPicture() {
-
-    }
-
     /**
      * Get Rock ID
      *
@@ -147,22 +138,18 @@ public class rockObject<rockObject> {
         return -1;
     }
 
-    public ArrayList getAllRocksIds(){
+    public ArrayList<Integer> getAllRocksIds(){
         ArrayList<Integer> ids = new ArrayList<>();
-        rocks.forEach(object -> {
-            ids.add(rocks.get(rocks.indexOf(object)).id);
-        });
+        rocks.forEach(object -> ids.add(rocks.get(rocks.indexOf(object)).id));
         return ids;
     }
 
     /**
-     * WIP - doesn't work
      * Writes all owned rocks to file
      */
     public void writeAll() throws IOException {
         String File = "rocks_owned.txt";
         String path = MyApplication.getContext().getFilesDir().getPath();
-        //TODO: find a way to us a raw resource id instead or find the right filepath
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path + "/" + File), StandardCharsets.UTF_8));
         rocks.forEach(rock -> {
             for (int i = 0; i < rock.amount; i++) {
@@ -176,10 +163,13 @@ public class rockObject<rockObject> {
         });
         bw.close();
     }
+
+    /**
+     * Clears all rocks in file
+     */
     public void clearAll() throws IOException {
         String File = "rocks_owned.txt";
         String path = MyApplication.getContext().getFilesDir().getPath();
-        //TODO: find a way to us a raw resource id instead or find the right filepath
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path + "/" + File), StandardCharsets.UTF_8));
         bw.write("");
         bw.close();

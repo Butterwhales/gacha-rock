@@ -44,7 +44,7 @@ public class inventory extends AppCompatActivity {
     private void setup() throws IOException {
         InputStream stream = getResources().openRawResource(R.raw.rocks);
         BufferedReader br = new BufferedReader(new InputStreamReader(stream));
-        String description = " ";
+        String description;
         while (br.ready()) {
             String[] e = br.readLine().split(" \\| ");
             //System.out.println(Arrays.toString(e));
@@ -73,9 +73,7 @@ public class inventory extends AppCompatActivity {
     private void buildGrid() {
         GridLayout grid = findViewById(R.id.grid);
         ArrayList<Integer> ids = rocksOwned.getAllRocksIds();
-        ids.forEach(id -> {
-            grid.addView(makeView(rocksOwned.getName(id), String.valueOf(rocksOwned.getRockAmount(id))));
-        });
+        ids.forEach(id -> grid.addView(makeView(rocksOwned.getName(id), String.valueOf(rocksOwned.getRockAmount(id)))));
     }
 
     private LinearLayout makeView(String number, String amount) {

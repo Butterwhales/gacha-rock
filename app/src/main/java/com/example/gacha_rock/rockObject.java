@@ -11,10 +11,12 @@ public class rockObject<rockObject> {
     private class Rock {
         int id;
         int amount;
+        rockObject object;
         double rarity;
         double rarityOverall;
-        rockObject object;
         String description;
+        double gemChance;
+        int gemAmount;
     }
 
     private final ArrayList<Rock> rocks = new ArrayList<>();
@@ -26,8 +28,10 @@ public class rockObject<rockObject> {
      * @param object      Rock Object
      * @param rarity      Rock Rarity
      * @param description Rock Description
+     * @param gemChance   Additional Chance to get a gem because of the rock
+     * @param gemAmount   Additional Amount of gems gained by the gem chance
      */
-    public void addEntry(int id, rockObject object, double rarityOverall, double rarity, String description) {
+    public void addEntry(int id, rockObject object, double rarityOverall, double rarity, double gemChance, int gemAmount, String description) {
         boolean isThere = false;
         for (Rock rock : rocks) {
             if (rock.id == id) {
@@ -45,6 +49,8 @@ public class rockObject<rockObject> {
             rock.rarity = rarity;
             rock.rarityOverall = rarityOverall;
             rock.description = description;
+            rock.gemChance = gemChance;
+            rock.gemAmount = gemAmount;
             rocks.add(rock);
         }
     }
@@ -121,6 +127,30 @@ public class rockObject<rockObject> {
      */
     public int getNumRocks() {
         return rocks.size();
+    }
+
+    /**
+     * Get gem chance
+     * @param id Id of rock
+     * @return Gem Chance
+     */
+    public double getGemChance(int id) {
+        for (Rock rock : rocks) {
+            if (rock.id == id) return rock.gemChance;
+        }
+        return -1;
+    }
+
+    /**
+     * Get gem amount
+     * @param id Id of rock
+     * @return Gem amount
+     */
+    public int getGemAmount(int id) {
+        for (Rock rock : rocks) {
+            if (rock.id == id) return rock.gemAmount;
+        }
+        return -1;
     }
 
     /**

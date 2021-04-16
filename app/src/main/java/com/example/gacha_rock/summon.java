@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,21 +37,18 @@ public class summon extends AppCompatActivity {
      */
 
     private void setup() throws IOException {
-
         InputStream stream = getResources().openRawResource(R.raw.rocks);
         BufferedReader br = new BufferedReader(new InputStreamReader(stream));
-        String description = " ";
+        String description;
         while (br.ready()) {
             String[] e = br.readLine().split(" \\| ");
-            System.out.println(Arrays.toString(e));
-
-            if (e.length == 4) {
+            //System.out.println(Arrays.toString(e));
+            if (e.length == 6) {
                 description = " ";
-                e[3] = e[3].replace(" |", "");
+                e[6] = e[6].replace(" |", "");
             } else
-                description = e[4];
-
-            rocks.addEntry(Integer.parseInt(e[0]), e[1], Double.parseDouble(e[2]), Double.parseDouble(e[3]), description);
+                description = e[6];
+            rocks.addEntry(Integer.parseInt(e[0]), e[1], Double.parseDouble(e[2]), Double.parseDouble(e[3]), Double.parseDouble(e[4]), Integer.parseInt(e[5]), description);
         }
         stream.close();
         br.close();
@@ -63,8 +59,8 @@ public class summon extends AppCompatActivity {
         String line;
         while ((line = br.readLine()) != null) {
             int e = Integer.parseInt(line);
-            //System.out.println(e);
-            rocksOwned.addEntry(e, rocks.getName(e), rocks.getRarity(e), rocks.getRarityOverall(e), rocks.getDescription(e));
+            //System.out.println(rocks.getName(e));
+            rocksOwned.addEntry(e, rocks.getName(e), rocks.getRarity(e), rocks.getRarityOverall(e), rocks.getGemChance(e), rocks.getGemAmount(e), rocks.getDescription(e));
         }
         br.close();
     }
@@ -103,7 +99,7 @@ public class summon extends AppCompatActivity {
         for (int i = 0; i < count; i++) {
             int rockId = Integer.parseInt(rarity.getRandom());
             System.out.println("rock id: " + rockId + " rock name: " + rocks.getName(rockId) + " Count: " + count);
-            rocksOwned.addEntry(rockId, rocks.getName(rockId), rocks.getRarity(rockId), rocks.getRarityOverall(rockId), rocks.getDescription(rockId));
+            rocksOwned.addEntry(rockId, rocks.getName(rockId), rocks.getRarity(rockId), rocks.getRarityOverall(rockId), rocks.getGemChance(rockId), rocks.getGemAmount(rockId), rocks.getDescription(rockId));
         }
         rocksOwned.writeAll();
     }

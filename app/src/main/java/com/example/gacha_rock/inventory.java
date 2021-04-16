@@ -48,12 +48,12 @@ public class inventory extends AppCompatActivity {
         while (br.ready()) {
             String[] e = br.readLine().split(" \\| ");
             //System.out.println(Arrays.toString(e));
-            if (e.length == 4) {
+            if (e.length == 6) {
                 description = " ";
-                e[3] = e[3].replace(" |", "");
+                e[6] = e[6].replace(" |", "");
             } else
-                description = e[4];
-            rocks.addEntry(Integer.parseInt(e[0]), e[1], Double.parseDouble(e[2]), Double.parseDouble(e[3]), description);
+                description = e[6];
+            rocks.addEntry(Integer.parseInt(e[0]), e[1], Double.parseDouble(e[2]), Double.parseDouble(e[3]), Double.parseDouble(e[4]), Integer.parseInt(e[5]), description);
         }
         stream.close();
         br.close();
@@ -65,7 +65,7 @@ public class inventory extends AppCompatActivity {
         while ((line = br.readLine()) != null) {
             int e = Integer.parseInt(line);
             //System.out.println(rocks.getName(e));
-            rocksOwned.addEntry(e, rocks.getName(e), rocks.getRarity(e), rocks.getRarityOverall(e), rocks.getDescription(e));
+            rocksOwned.addEntry(e, rocks.getName(e), rocks.getRarity(e), rocks.getRarityOverall(e), rocks.getGemChance(e), rocks.getGemAmount(e), rocks.getDescription(e));
         }
         br.close();
     }
@@ -106,7 +106,8 @@ public class inventory extends AppCompatActivity {
     public int getDrawableFromId(String id) {
         String name = id.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "_") + "_icon";
         int resourceId = getApplicationContext().getResources().getIdentifier(name, "drawable", getApplicationContext().getPackageName());
-        if (resourceId == 0) resourceId = getApplicationContext().getResources().getIdentifier("rock_chan_icon", "drawable", getApplicationContext().getPackageName());
+        if (resourceId == 0)
+            resourceId = getApplicationContext().getResources().getIdentifier("rock_chan_icon", "drawable", getApplicationContext().getPackageName());
         return resourceId;
     }
 

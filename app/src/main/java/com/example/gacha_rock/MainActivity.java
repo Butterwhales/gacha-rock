@@ -144,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
                     additionalGold = 1;
             }
 
-            //TODO Implement this feature by adding individual gem chances and number of additional gems
             if (chance <= rocks.getGemChance(featuredRockId)) {
                 additionalGems = rocks.getGemAmount(featuredRockId);
             }
@@ -220,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Id = null in getDrawableFromId");
             return resourceId;
         }
-        String name = id.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "_") + "_icon";
+        String name = id.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "_") + "_icon"; //TODO Remove  + "_icon" when we have more full images
         resourceId = getApplicationContext().getResources().getIdentifier(name, "drawable", getApplicationContext().getPackageName());
         if (resourceId == 0)
             resourceId = getApplicationContext().getResources().getIdentifier("rock_chan", "drawable", getApplicationContext().getPackageName());

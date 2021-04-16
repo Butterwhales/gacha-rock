@@ -223,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
         String name = id.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "_");
         resourceId = getApplicationContext().getResources().getIdentifier(name, "drawable", getApplicationContext().getPackageName());
         if (resourceId == 0) {
-            name = name + "_icon"; //TODO Remove  + "_icon" when we have more full images
+            name = name + "_icon";
             resourceId = getApplicationContext().getResources().getIdentifier(name, "drawable", getApplicationContext().getPackageName());
             if (resourceId == 0)
                 resourceId = getApplicationContext().getResources().getIdentifier("rock_chan", "drawable", getApplicationContext().getPackageName());

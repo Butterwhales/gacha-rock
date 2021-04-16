@@ -15,7 +15,7 @@
 14 | The Iron Lady | 3 | 0.0 | 0.00  | 0 | Ding dong the witch is dead | gabe
 15 | The Terraria Boulder | 3 | 0.0 | 0.00  | 0 | Being hit for 480 points of damage has never been so fun! | finished
 16 | Chris Rock | 4 | 0.0 | 0.00  | 0 |  |
-17 | Danny | 4 | 0.0 | 0.00  | 0 | Danny Devitos face on a rock | finished
+17 | Danny | 4 | 0.0 | 0.10  | 1 | Danny Devitos face on a rock | finished
 18 | David Spade | 4 | 0.0 | 0.00  | 0 | Legendary Miner |
 19 | Dinosaur Fossils | 4 | 0.0 | 0.00  | 0 | A.K.A Queen Elizabeth |
 20 | DIOrite | 4 | 0.0 | 0.00  | 0 | Kono Dio Da! | finished

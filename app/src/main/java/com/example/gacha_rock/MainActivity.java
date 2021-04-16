@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        updateDisplay();
     }
 
     @Override
@@ -207,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
         gemText.setText(String.valueOf(gemCount));
         playerText.setText(String.valueOf((int) Math.floor(playerLvl)));
         // pickText.setText(String.format("%d", pickCount));
-        featuredRockId = 25;
+        featuredRockId = 17;
         Drawable rockDrawable = ResourcesCompat.getDrawable(getResources(), getDrawableFromId(rocks.getName(featuredRockId)), getApplicationContext().getTheme());
         featuredRock.setImageDrawable(rockDrawable);
     }
@@ -219,10 +220,14 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Id = null in getDrawableFromId");
             return resourceId;
         }
-        String name = id.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "_") + "_icon"; //TODO Remove  + "_icon" when we have more full images
+        String name = id.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "_");
         resourceId = getApplicationContext().getResources().getIdentifier(name, "drawable", getApplicationContext().getPackageName());
-        if (resourceId == 0)
-            resourceId = getApplicationContext().getResources().getIdentifier("rock_chan", "drawable", getApplicationContext().getPackageName());
+        if (resourceId == 0) {
+            name = name + "_icon"; //TODO Remove  + "_icon" when we have more full images
+            resourceId = getApplicationContext().getResources().getIdentifier(name, "drawable", getApplicationContext().getPackageName());
+            if (resourceId == 0)
+                resourceId = getApplicationContext().getResources().getIdentifier("rock_chan", "drawable", getApplicationContext().getPackageName());
+        }
         return resourceId;
     }
 

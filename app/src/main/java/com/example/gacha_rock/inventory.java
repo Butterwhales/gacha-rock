@@ -24,6 +24,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.gridlayout.widget.GridLayout;
 
 public class inventory extends AppCompatActivity {
+    private static final String FEATURED_ROCK_ID = "featuredRockId";
     public rockObject<String> rocksOwned = new rockObject<>();
     public rockObject<String> rocks = new rockObject<>();
 

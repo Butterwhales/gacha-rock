@@ -1,8 +1,12 @@
 package com.example.gacha_rock;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -14,14 +18,28 @@ import java.nio.charset.StandardCharsets;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class summon extends AppCompatActivity {
+    private static final String PREFS_NAME = "com.example.gacha_rock.prefs";
+    private static final String INFINITE_LOOT_PREF = "infiniteLootPref";
+    private static final String EVERTHING_IS_FREE_PREF = "everythingIsFreePref";
+    private static final String PICKS_PREF = "picksPref";
     public rockObject<String> rocksOwned = new rockObject<>();
     public rockObject<String> rocks = new rockObject<>();
     weightedRandom<String> rarity = new weightedRandom<>();
+
+    private int infiniteMode;
+    private int freeMode;
+    private int pickCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summon);
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        infiniteMode = prefs.getInt(INFINITE_LOOT_PREF, infiniteMode);
+        freeMode = prefs.getInt(EVERTHING_IS_FREE_PREF, freeMode);
+        pickCount = prefs.getInt(PICKS_PREF, pickCount);
+        TextView pickText = findViewById(R.id.pickCountText);
+        pickText.setText(String.valueOf(pickCount));
         try {
             setup();
         } catch (IOException e) {
@@ -74,6 +92,15 @@ public class summon extends AppCompatActivity {
     }
 
     private void roll(int count) throws IOException {
+        TextView pickText = findViewById(R.id.pickCountText);
+
+        if (freeMode == 0 && infiniteMode == 0) {
+            if (pickCount < count) {
+                Toast.makeText(getApplicationContext(), "Not enough picks", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+
         for (int i = 0; i < rocks.getNumRocks(); i++) {
             double overallRarity = rocks.getRarity(i);
             switch ((int) rocks.getRarityOverall(i)) {
@@ -102,6 +129,18 @@ public class summon extends AppCompatActivity {
             rocksOwned.addEntry(rockId, rocks.getName(rockId), rocks.getRarity(rockId), rocks.getRarityOverall(rockId), rocks.getGemChance(rockId), rocks.getGemAmount(rockId), rocks.getDescription(rockId));
         }
         rocksOwned.writeAll();
+        if (freeMode == 0 && infiniteMode == 0){
+            pickCount -= count;
+            pickText.setText(String.valueOf(pickCount));
+        }
+        updatePrefs();
+    }
+
+    private void updatePrefs() {
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(PICKS_PREF, pickCount);
+        editor.apply();
     }
 
     public void backClick(View view) {

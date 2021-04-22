@@ -1,6 +1,8 @@
 package com.example.gacha_rock;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -24,21 +27,23 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.gridlayout.widget.GridLayout;
 
 public class inventory extends AppCompatActivity {
+    private static final String PREFS_NAME = "com.example.gacha_rock.prefs";
     private static final String FEATURED_ROCK_ID = "featuredRockId";
     public rockObject<String> rocksOwned = new rockObject<>();
     public rockObject<String> rocks = new rockObject<>();
+    private int featuredRockId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        featuredRockId = prefs.getInt(FEATURED_ROCK_ID, featuredRockId);
         try {
             setup();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(rocks.getName(0));
-        System.out.println(rocks.getId("Cobblestone"));
         buildGrid();
     }
 
@@ -77,20 +82,29 @@ public class inventory extends AppCompatActivity {
         ids.forEach(id -> grid.addView(makeView(rocksOwned.getName(id), String.valueOf(rocksOwned.getRockAmount(id)))));
     }
 
-    private LinearLayout makeView(String number, String amount) {
+    private LinearLayout makeView(String rockName, String amount) {
         LinearLayout layout = new LinearLayout(this.getApplicationContext());
         layout.setOrientation(LinearLayout.VERTICAL);
         TextView textView = new TextView(this.getApplicationContext());
-        textView.setText(String.format("%s", number));
+        textView.setText(String.format("%s", rockName));
         textView.setPadding(getResources().getDimensionPixelOffset(R.dimen.leftPadding), 0, getResources().getDimensionPixelSize(R.dimen.rightPadding), 0);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.grid_text_size));
         textView.setTextColor(Color.WHITE);
         layout.addView(textView);
 
         ImageView imageView = new ImageView(this.getApplicationContext());
-        Drawable rockDrawable = ResourcesCompat.getDrawable(getResources(), getDrawableFromId(number), getApplicationContext().getTheme());
+        Drawable rockDrawable = ResourcesCompat.getDrawable(getResources(), getDrawableFromId(rockName), getApplicationContext().getTheme());
         imageView.setImageDrawable(rockDrawable);
         imageView.setMaxHeight(100);
+        imageView.setId(rocksOwned.getId(rockName));
+        imageView.setOnClickListener(v -> {
+            Toast.makeText(getApplicationContext(), "Set favorite rock to " + rocks.getName(v.getId()), Toast.LENGTH_SHORT).show();
+            featuredRockId = v.getId();
+            SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putInt(FEATURED_ROCK_ID, featuredRockId);
+            editor.apply();
+        });
         layout.addView(imageView);
 
         TextView textView2 = new TextView(this.getApplicationContext());

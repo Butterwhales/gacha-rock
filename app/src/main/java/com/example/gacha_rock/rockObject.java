@@ -37,7 +37,7 @@ public class rockObject<rockObject> {
             if (rock.id == id) {
                 isThere = true;
                 rock.amount += 1;
-                System.out.println(rock.object +": " + rock.amount);
+                //System.out.println(rock.object +": " + rock.amount);
             }
         }
 
@@ -131,6 +131,7 @@ public class rockObject<rockObject> {
 
     /**
      * Get gem chance
+     *
      * @param id Id of rock
      * @return Gem Chance
      */
@@ -143,6 +144,7 @@ public class rockObject<rockObject> {
 
     /**
      * Get gem amount
+     *
      * @param id Id of rock
      * @return Gem amount
      */
@@ -168,7 +170,7 @@ public class rockObject<rockObject> {
         return -1;
     }
 
-    public ArrayList<Integer> getAllRocksIds(){
+    public ArrayList<Integer> getAllRocksIds() {
         ArrayList<Integer> ids = new ArrayList<>();
         rocks.forEach(object -> ids.add(rocks.get(rocks.indexOf(object)).id));
         return ids;

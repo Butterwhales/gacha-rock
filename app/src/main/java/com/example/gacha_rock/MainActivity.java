@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String PLAYER_LVL_PREF = "playerLvlPref";
     private static final String TOTAL_CLICKS = "totalClicksPref";
     private static final String FEATURED_ROCK_ID = "featuredRockId";
+    private static final String DEV_MODE_PREF = "devModePref";
     /**
      * Number of times clicker has been clicked
      */
@@ -54,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
     private Random rand = new Random();
     private ImageView featuredRock;
     private int featuredRockId;
+    private int devMode;
+    private int itterator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putFloat(PLAYER_LVL_PREF, playerLvl);
         editor.putInt(TOTAL_CLICKS, totalClicks);
         editor.putInt(FEATURED_ROCK_ID, featuredRockId);
+        editor.putInt(DEV_MODE_PREF, devMode);
         editor.apply();
     }
 
@@ -98,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putFloat(PLAYER_LVL_PREF, playerLvl);
         editor.putInt(TOTAL_CLICKS, totalClicks);
         editor.putInt(FEATURED_ROCK_ID, featuredRockId);
+        editor.putInt(DEV_MODE_PREF, devMode);
         editor.apply();
     }
 
@@ -190,7 +196,8 @@ public class MainActivity extends AppCompatActivity {
         pickCount = prefs.getInt(PICKS_PREF, pickCount);
         playerLvl = prefs.getFloat(PLAYER_LVL_PREF, playerLvl);
         totalClicks = prefs.getInt(TOTAL_CLICKS, totalClicks);
-        totalClicks = prefs.getInt(FEATURED_ROCK_ID, featuredRockId);
+        featuredRockId = prefs.getInt(FEATURED_ROCK_ID, featuredRockId);
+        devMode = prefs.getInt(DEV_MODE_PREF, devMode);
         totalClicks = goldCount; //TODO remove this
         updateDisplay();
     }
@@ -208,7 +215,6 @@ public class MainActivity extends AppCompatActivity {
         gemText.setText(String.valueOf(gemCount));
         playerText.setText(String.valueOf((int) Math.floor(playerLvl)));
         // pickText.setText(String.format("%d", pickCount));
-        featuredRockId = 17;
         Drawable rockDrawable = ResourcesCompat.getDrawable(getResources(), getDrawableFromId(rocks.getName(featuredRockId)), getApplicationContext().getTheme());
         featuredRock.setImageDrawable(rockDrawable);
     }
@@ -217,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
         int resourceId;
         if (id == null) {
             resourceId = getApplicationContext().getResources().getIdentifier("rock_chan", "drawable", getApplicationContext().getPackageName());
-            System.out.println("Id = null in getDrawableFromId");
+            System.out.println("No image. Id = null in getDrawableFromId");
             return resourceId;
         }
         String name = id.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "_");
@@ -239,7 +245,17 @@ public class MainActivity extends AppCompatActivity {
         editor.putFloat(PLAYER_LVL_PREF, playerLvl);
         editor.putInt(TOTAL_CLICKS, totalClicks);
         editor.putInt(FEATURED_ROCK_ID, featuredRockId);
+        editor.putInt(DEV_MODE_PREF, devMode);
         editor.apply();
+    }
+
+    public void devModeClick(View view) {
+        if (itterator >= 10) {
+            devMode = 1;
+            Toast.makeText(getApplicationContext(), "Dev Mode Activated", Toast.LENGTH_SHORT).show();
+            updatePrefs();
+        }
+        itterator++;
     }
 
     public void inventoryClick(View view) {

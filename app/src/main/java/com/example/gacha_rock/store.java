@@ -1,14 +1,13 @@
 package com.example.gacha_rock;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class store extends AppCompatActivity {
 
@@ -25,6 +24,7 @@ public class store extends AppCompatActivity {
     private int goldCount = 0;
     private int gemCount = 0;
     private int pickCount = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +33,10 @@ public class store extends AppCompatActivity {
         initializeItems();
     }
 
-    private void initializeItems(){
+    private void initializeItems() {
         goldText = findViewById(R.id.goldText);
         gemText = findViewById(R.id.gemText);
-       // pickText = findViewById(R.id.pickText);
+        // pickText = findViewById(R.id.pickText);
 
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         goldCount = prefs.getInt(GOLD_PREF, goldCount);
@@ -47,10 +47,10 @@ public class store extends AppCompatActivity {
         updateDisplay();
     }
 
-    private void updateDisplay(){
+    private void updateDisplay() {
         goldText.setText(String.format("%d", goldCount));
         gemText.setText(String.format("%d", gemCount));
-       // pickText.setText(String.format("%d", pickCount));
+        // pickText.setText(String.format("%d", pickCount));
     }
 
     public void backClick(View view) {
@@ -58,7 +58,7 @@ public class store extends AppCompatActivity {
         startActivity(new Intent(store.this, MainActivity.class));
     }
 
-    private void updatePrefs(){
+    private void updatePrefs() {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(GEMS_PREF, gemCount);

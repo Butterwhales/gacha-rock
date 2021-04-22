@@ -24,7 +24,7 @@ public class settings extends AppCompatActivity {
     private static final String DARK_PREF = "darkPref";
     private static final String DEV_MODE_PREF = "devModePref";
     private static final String INFINITE_LOOT_PREF = "infiniteLootPref";
-    private static final String EVERTHING_IS_FREE_PREF = "everythingIsFreePref";
+    private static final String EVERYTHING_IS_FREE_PREF = "everythingIsFreePref";
     public rockObject<String> rocksOwned = new rockObject<>();
     public rockObject<String> rocks = new rockObject<>();
 
@@ -44,7 +44,7 @@ public class settings extends AppCompatActivity {
         darkMode = prefs.getInt(DARK_PREF, darkMode);
         devMode = prefs.getInt(DEV_MODE_PREF, devMode);
         infiniteMode = prefs.getInt(INFINITE_LOOT_PREF, infiniteMode);
-        freeMode = prefs.getInt(EVERTHING_IS_FREE_PREF, freeMode);
+        freeMode = prefs.getInt(EVERYTHING_IS_FREE_PREF, freeMode);
 
         ids.forEach(mySwitch -> switches.add(findViewById(mySwitch)));
         if (audioMode == 1) switches.get(0).setChecked(true);
@@ -93,7 +93,7 @@ public class settings extends AppCompatActivity {
         editor.putInt(DARK_PREF, darkMode);
         editor.putInt(DEV_MODE_PREF, devMode);
         editor.putInt(INFINITE_LOOT_PREF, infiniteMode);
-        editor.putInt(EVERTHING_IS_FREE_PREF, freeMode);
+        editor.putInt(EVERYTHING_IS_FREE_PREF, freeMode);
         editor.putInt(FEATURED_ROCK_ID, featuredRockId);
         editor.apply();
     }

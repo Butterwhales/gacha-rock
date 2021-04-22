@@ -129,10 +129,15 @@ public class summon extends AppCompatActivity {
             rocksOwned.addEntry(rockId, rocks.getName(rockId), rocks.getRarity(rockId), rocks.getRarityOverall(rockId), rocks.getGemChance(rockId), rocks.getGemAmount(rockId), rocks.getDescription(rockId));
         }
         rocksOwned.writeAll();
-        if (freeMode == 0 && infiniteMode == 0){
+        if (freeMode == 0 && infiniteMode == 0) {
             pickCount -= count;
             pickText.setText(String.valueOf(pickCount));
         }
+        if (count == 1)
+            Toast.makeText(getApplicationContext(), "You mined " + count + " rock", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(getApplicationContext(), "You mined " + count + " rocks", Toast.LENGTH_SHORT).show();
+
         updatePrefs();
     }
 

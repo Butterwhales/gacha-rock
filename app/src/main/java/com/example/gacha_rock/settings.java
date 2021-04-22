@@ -73,11 +73,12 @@ public class settings extends AppCompatActivity {
                     darkMode = 0;
                 } else if (id == R.id.devSwitch) {
                     devMode = 0;
+                    infiniteMode = 0;
+                    freeMode = 0;
                 } else if (id == R.id.infSwitch) {
                     infiniteMode = 0;
                 } else if (id == R.id.everyFreeSwitch) {
                     freeMode = 0;
-                    System.out.println(freeMode);
                 }
             }
             updatePrefs();

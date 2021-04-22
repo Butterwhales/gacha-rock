@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">gacha-rock</string>
+    <string name="app_name">Gacha Rock</string>
     <string name="gems">Gems:</string>
     <string name="gem_count">[Gem Count]</string>
     <string name="player_lvl">Player Lvl:</string>

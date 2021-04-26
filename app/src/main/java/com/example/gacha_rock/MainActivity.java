@@ -198,7 +198,6 @@ public class MainActivity extends AppCompatActivity {
         totalClicks = prefs.getInt(TOTAL_CLICKS, totalClicks);
         featuredRockId = prefs.getInt(FEATURED_ROCK_ID, featuredRockId);
         devMode = prefs.getInt(DEV_MODE_PREF, devMode);
-        totalClicks = goldCount; //TODO remove this
         updateDisplay();
     }
 

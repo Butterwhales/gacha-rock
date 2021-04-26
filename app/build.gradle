@@ -7,10 +7,10 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.gacha_rock"
+        applicationId "com.legit.gacha_rock"  // I screwed with this - Gabe
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 1
+        versionCode 3
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

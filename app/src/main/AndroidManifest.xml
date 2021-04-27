@@ -7,6 +7,7 @@
         android:allowBackup="true"
         android:icon="@drawable/rock_chan_icon"
         android:label="@string/app_name"
+        android:screenOrientation="portrait"
         android:roundIcon="@drawable/rock_chan_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gacharock">

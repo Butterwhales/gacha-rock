@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (chance <= rocks.getGemChance(featuredRockId)) {
-                additionalGems = rocks.getGemAmount(featuredRockId);
+                additionalGems = rocks.getGemAmount(featuredRockId) * rocksOwned.getRockAmount(featuredRockId);
             }
 
             if (goldCount < 0)

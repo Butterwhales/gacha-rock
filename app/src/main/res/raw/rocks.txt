@@ -1,34 +1,35 @@
-0 | "Brown Rock" | 0 | 0.0 | 0.00  | 0 | Smells funny |
-1 | Cobblestone | 0 | 0.0 | 0.00  | 0 | A collection of smaller stones |
+0 | "Brown Rock" | 0 | 0.0 | 0.00  | 0 | Smells funny | finished
+1 | Cobblestone | 0 | 0.0 | 0.00  | 0 | A collection of smaller stones | finished
 2 | Fools Gold | 0 | 0.0 | 0.00  | 0 | Pyrite | Finished
-3 | Granite | 0 | 0.0 | 0.00  | 0 | Dont take this rock for granite |
-4 | Obsidian | 1 | 0.0 | 0.00  | 0 | "10 blocks is the magical total" |
-5 | Rock Bear | 2 | 0.0 | 0.00  | 0 | An metamorphic force of nature |
-6 | Rock Snek | 2 | 0.0 | 0.00  | 0 | ssssssssssss |
-7 | Rock Warbler | 2 | 0.0 | 0.00  | 0 | tweet tweet |
+3 | Granite | 0 | 0.0 | 0.00  | 0 | Dont take this rock for granite | finished
+4 | Obsidian | 1 | 0.0 | 0.00  | 0 | "10 blocks is the magical total" | finished
+7 | Rock Warbler | 2 | 0.0 | 0.00  | 0 | tweet tweet | finished
 8 | Rocky Road | 2 | 0.0 | 0.00  | 0 | More of a soup than ice cream. |
 9 | Bedrock | 3 | 0.0 | 0.00  | 0 | The hardest known substance in the universe | finished
-10 | Flour | 3 | 0.0 | 0.00  | 0 | Almost as addicting as this game! |
-11 | Iron Golem | 3 | 0.0 | 0.00  | 0 | Minecraft | finished
-12 | Korg | 3 | 0.0 | 0.00  | 0 |  |
-13 | Sparkle | 3 | 0.0 | 0.00  | 0 | Gabe found a geode at a summer camp when he was like 10. Its name is Sparkle | gabe
-14 | The Iron Lady | 3 | 0.0 | 0.00  | 0 | Ding dong the witch is dead | gabe
-15 | The Terraria Boulder | 3 | 0.0 | 0.00  | 0 | Being hit for 480 points of damage has never been so fun! | finished
-16 | Chris Rock | 4 | 0.0 | 0.00  | 0 |  |
-17 | Danny | 4 | 0.0 | 0.10  | 1 | Danny Devitos face on a rock | finished
-18 | David Spade | 4 | 0.0 | 0.00  | 0 | Legendary Miner |
-19 | Dinosaur Fossils | 4 | 0.0 | 0.00  | 0 | A.K.A Queen Elizabeth |
-20 | DIOrite | 4 | 0.0 | 0.00  | 0 | Kono Dio Da! | finished
-21 | Elvis the King of Rock | 4 | 0.0 | 0.00  | 0 | "Thank you. Thank you very much." |
-22 | Kid Rock | 4 | 0.0 | 0.00  | 0 | "you want a wahburger and french cries?" |
-23 | Neil Diamond | 4 | 0.0 | 0.00  | 0 | The legendary artist behind such songs as "Love on the Rocks". |
-24 | Rock Astley | 4 | 0.0 | 0.00  | 0 | Never gonna give you up! | finished
-25 | Rock Chan | 4 | 0.0 | 0.05  | 1 | UwU | finished
-26 | Rock Lee | 4 | 0.0 | 0.00  | 0 | Pray he doesnt open the 5th hgate | finished
-27 | Rock Lesnar | 4 | 0.0 | 0.00  | 0 |  |
-28 | Rocky Balboa | 4 | 0.0 | 0.00  | 0 | "YO ADRIEN" | gabe
-29 | Shungite | 4 | 0.0 | 0.00  | 0 | stops 5G |
-30 | Sips.co Dirt | 4 | 0.0 | 0.00  | 0 | "Big money, big women, big fun!" | finished
-31 | Slate-X Rocket | 4 | 0.0 | 0.00  | 0 | WenHop |
-32 | The Nope Diamond | 4 | 0.0 | 0.00  | 0 | Nope | gabe
-33 | The Rock | 4 | 0.0 | 0.00  | 0 | Some asssembly required |
+10 | Iron Golem | 3 | 0.0 | 0.00  | 0 | Minecraft | finished
+11 | Korg | 3 | 0.0 | 0.00  | 0 |  | finished
+12 | Sparkle | 3 | 0.0 | 0.00  | 0 | Gabe found a geode at a summer camp when he was like 10. Its name is Sparkle | gabe
+13 | The Iron Lady | 3 | 0.0 | 0.00  | 0 | Ding dong the witch is dead | gabe
+14 | The Terraria Boulder | 3 | 0.0 | 0.00  | 0 | Being hit for 480 points of damage has never been so fun! | finished
+36 | Bernie Sand | 4 | 0.0 | 0.00  | 0 | I am once again in need of your financial support |
+15 | Chris Rock | 4 | 0.0 | 0.00  | 0 | Good Comedian | finished
+16 | Danny | 4 | 0.0 | 0.10  | 1 | Danny Devitos face on a rock | finished
+17 | David Spade | 4 | 0.0 | 0.00  | 0 | Legendary Miner | finished
+18 | Dinosaur Fossils | 4 | 0.0 | 0.00  | 0 | A.K.A Queen Elizabeth |
+19 | DIOrite | 4 | 0.0 | 0.00  | 0 | Kono Dio Da! | finished
+20 | Elvis the King of Rock | 4 | 0.0 | 0.00  | 0 | "Thank you. Thank you very much." | finished
+35 | Jeremy | 4 | 0.0 | 0.00  | 0 | The Man, The Myth, The Legend | finished
+21 | Kid Rock | 4 | 0.0 | 0.00  | 0 | "you want a wahburger and french cries?" | mike
+22 | Neil Diamond | 4 | 0.0 | 0.00  | 0 | The legendary artist behind such songs as "Love on the Rocks". | mike
+34 | Ralphie | 4 | 0.0 | 0.00  | 0 | Pro Gamer | finished
+23 | Rock Astley | 4 | 0.0 | 0.00  | 0 | Never gonna give you up! | finished
+24 | Rock Chan | 4 | -0.5 | 0.05  | 1 | UwU | finished
+33 | Rock hudson | 4 | 0.0 | 0.00  | 0 |  |
+25 | Rock Lee | 4 | 0.0 | 0.00  | 0 | Pray he doesnt open the 5th hgate | finished
+26 | Rock Lesnar | 4 | 0.0 | 0.00  | 0 | Pro Rock Paper Scissors fighter | finished
+27 | Rocky Balboa | 4 | 0.0 | 0.00  | 0 | "YO ADRIEN" | mike
+28 | Shungite | 4 | 0.0 | 0.00  | 0 | stops 5G | finished
+29 | Sips.co Dirt | 4 | 0.0 | 0.00  | 0 | "Big money, big women, big fun!" | finished
+30 | Slate-X Rocket | 4 | 0.0 | 0.00  | 0 | WenHop |
+31 | The Nope Diamond | 4 | 0.0 | 0.00  | 0 | Nope | gabe
+32 | The Rock | 4 | 0.0 | 0.00  | 0 | Some asssembly required |

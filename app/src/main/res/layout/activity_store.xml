@@ -21,29 +21,31 @@
         android:id="@+id/goldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="90dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/gold_count"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/gemText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="75dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/gem_count"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="8dp"
         android:text="@string/shop"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
@@ -72,55 +74,68 @@
                 android:rowCount="3">
 
                 <ImageButton
-                    android:id="@+id/imageButton"
+                    android:id="@+id/cashButton1"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
-                    android:contentDescription="TODO"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="cashButton1"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton2"
+                    android:id="@+id/cashButton2"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="cashButton2"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton3"
+                    android:id="@+id/cashButton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_columnSpan="3"
                     android:layout_columnWeight="1"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_long_icon"
+                    android:tag="cashButton3"
                     tools:srcCompat="@drawable/store_frame_long_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton4"
+                    android:id="@+id/cashButton4"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="cashButton4"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton5"
+                    android:id="@+id/cashButton5"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="cashButton5"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton6"
+                    android:id="@+id/cashButton6"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="cashButton6"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton7"
+                    android:id="@+id/cashButton7"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="cashButton7"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
             </GridLayout>
@@ -135,54 +150,68 @@
                 tools:layout_editor_absoluteY="64dp">
 
                 <ImageButton
-                    android:id="@+id/imageButton8"
+                    android:id="@+id/pickButton1"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="pickButton1"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton9"
+                    android:id="@+id/pickButton2"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="pickButton2"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton10"
+                    android:id="@+id/pickButton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_columnSpan="3"
                     android:layout_columnWeight="1"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_long_icon"
+                    android:tag="pickButton3"
                     tools:srcCompat="@drawable/store_frame_long_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton11"
+                    android:id="@+id/pickButton4"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="pickButton4"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton12"
+                    android:id="@+id/pickButton5"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="pickButton5"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton13"
+                    android:id="@+id/pickButton6"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="pickButton6"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton14"
+                    android:id="@+id/pickButton7"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="pickButton7"
                     tools:srcCompat="@drawable/store_frame_icon" />
             </GridLayout>
 
@@ -196,54 +225,68 @@
                 tools:layout_editor_absoluteY="64dp">
 
                 <ImageButton
-                    android:id="@+id/imageButton15"
+                    android:id="@+id/gemsButton1"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="gemsButton1"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton16"
+                    android:id="@+id/gemsButton2"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="gemsButton2"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton17"
+                    android:id="@+id/gemsButton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_columnSpan="3"
                     android:layout_columnWeight="1"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_long_icon"
+                    android:tag="gemsButton3"
                     tools:srcCompat="@drawable/store_frame_long_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton18"
+                    android:id="@+id/gemsButton4"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="gemsButton4"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton19"
+                    android:id="@+id/gemsButton5"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="gemsButton5"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton20"
+                    android:id="@+id/gemsButton6"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="gemsButton6"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton21"
+                    android:id="@+id/gemsButton7"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_icon"
+                    android:tag="gemsButton7"
                     tools:srcCompat="@drawable/store_frame_icon" />
 
             </GridLayout>
@@ -256,12 +299,14 @@
             android:rowCount="3">
 
                 <ImageButton
-                    android:id="@+id/imageButton22"
+                    android:id="@+id/removeAdsButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_columnSpan="3"
                     android:layout_columnWeight="1"
+                    android:onClick="buttonClick"
                     android:src="@drawable/store_frame_long_icon"
+                    android:tag="removeAdsButton"
                     tools:srcCompat="@drawable/store_frame_long_icon" />
 
         </GridLayout>
@@ -269,6 +314,49 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/gems"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/gold"
+        app:layout_constraintEnd_toStartOf="@+id/goldText"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toEndOf="@+id/gemText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/number_of_picks"
+        app:layout_constraintStart_toEndOf="@+id/goldText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pickText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/pick_count"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

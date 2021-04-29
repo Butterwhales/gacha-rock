@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.text.DecimalFormat;
 import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView featuredRock;
     private int featuredRockId;
     private int devMode;
-    private int itterator;
+    private int iterator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -210,8 +211,11 @@ public class MainActivity extends AppCompatActivity {
         playerLvl = (float) (Math.sqrt(goldCount) / 10);
         xpBar.setProgress(Math.round(playerLvl % 1 * 100));
 
-        goldText.setText(String.valueOf(goldCount));
-        gemText.setText(String.valueOf(gemCount));
+        DecimalFormat comaFormat = new DecimalFormat("#.##########");
+        comaFormat.setGroupingUsed(true);
+        comaFormat.setGroupingSize(3);
+        goldText.setText(comaFormat.format(goldCount));
+        gemText.setText(comaFormat.format(gemCount));
         playerText.setText(String.valueOf((int) Math.floor(playerLvl)));
         // pickText.setText(String.format("%d", pickCount));
         Drawable rockDrawable = ResourcesCompat.getDrawable(getResources(), getDrawableFromId(rocks.getName(featuredRockId)), getApplicationContext().getTheme());
@@ -249,12 +253,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void devModeClick(View view) {
-        if (itterator >= 10) {
+        if (iterator >= 10) {
             devMode = 1;
             Toast.makeText(getApplicationContext(), "Dev Mode Activated", Toast.LENGTH_SHORT).show();
             updatePrefs();
         }
-        itterator++;
+        iterator++;
     }
 
     public void inventoryClick(View view) {

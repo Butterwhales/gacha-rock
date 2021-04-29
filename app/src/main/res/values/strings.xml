@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Gacha Rock</string>
     <string name="gems">Gems:</string>
-    <string name="gem_count">[Gem Count]</string>
+    <string name="gem_count">[GEMS]</string>
     <string name="player_lvl">Player Lvl:</string>
     <string name="store_button">Store</string>
     <string name="summons_button">Summons</string>
@@ -28,13 +28,14 @@
 
     <string name="shop">Shop</string>
     <string name="player_lvl_num">00</string>
-    <string name="gold_count">[Gold Count]</string>
+    <string name="gold_count">[GOLD]</string>
     <string name="clear">Clear</string>
     <string name="off">OFF</string>
     <string name="on">ON</string>
     <string name="clear_all_rocks">Clear All Rocks:</string>
-    <string name="number_of_picks">Number of picks:</string>
-    <string name="pick_count">[PICK COUNT]</string>
+    <string name="number_of_picks">Picks:</string>
+    <string name="pick_count">[PICKS]</string>
     <string name="content_discription">Pick</string>
+    <string name="gold">Gold:</string>
 
 </resources>

@@ -119,7 +119,7 @@ public class inventory extends AppCompatActivity {
     }
 
     public int getDrawableFromId(String id) {
-        String name = id.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "_") + "_icon";
+        String name = id.toLowerCase().replaceAll(" ", "_") .replaceAll("\\.", "_").replaceAll("\"","") + "_icon";
         int resourceId = getApplicationContext().getResources().getIdentifier(name, "drawable", getApplicationContext().getPackageName());
         if (resourceId == 0)
             resourceId = getApplicationContext().getResources().getIdentifier("rock_chan_icon", "drawable", getApplicationContext().getPackageName());

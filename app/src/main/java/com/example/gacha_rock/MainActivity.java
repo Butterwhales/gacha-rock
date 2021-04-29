@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("No image. Id = null in getDrawableFromId");
             return resourceId;
         }
-        String name = id.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "_");
+        String name = id.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "_").replaceAll("\"","");
         resourceId = getApplicationContext().getResources().getIdentifier(name, "drawable", getApplicationContext().getPackageName());
         if (resourceId == 0) {
             name = name + "_icon";

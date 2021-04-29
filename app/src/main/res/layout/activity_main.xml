@@ -120,13 +120,13 @@
         android:id="@+id/goldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
         android:text="@string/gold_count"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/featuredRock"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/playerText"
@@ -137,5 +137,22 @@
         app:layout_constraintEnd_toStartOf="@+id/progressBar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/gold"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/goldText"
+        app:layout_constraintTop_toBottomOf="@+id/gemText" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="textView9,goldText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

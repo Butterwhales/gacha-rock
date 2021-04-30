@@ -166,11 +166,13 @@ public class MainActivity extends AppCompatActivity {
                     fingerCount += 1;
                     goldCount += 1 + additionalGold;
                     gemCount += additionalGems;
+                    totalClicks += 1;
                     break;
                 case MotionEvent.ACTION_POINTER_DOWN:
                     goldCount += 1 + additionalGold;
                     gemCount += additionalGems;
                     fingerCount += 1;
+                    totalClicks += 1;
                     break;
                 case MotionEvent.ACTION_POINTER_UP:
                     fingerCount -= 1;
@@ -208,9 +210,9 @@ public class MainActivity extends AppCompatActivity {
     //store last 5 time differences average them out
 
     private void updateDisplay() {
-        playerLvl = (float) (Math.sqrt(goldCount) / 10);
+        playerLvl = (float) (Math.sqrt(totalClicks) / 10);
         xpBar.setProgress(Math.round(playerLvl % 1 * 100));
-
+        //System.out.println(totalClicks);
         DecimalFormat comaFormat = new DecimalFormat("#.##########");
         comaFormat.setGroupingUsed(true);
         comaFormat.setGroupingSize(3);

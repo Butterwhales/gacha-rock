@@ -1,10 +1,14 @@
 package com.example.gacha_rock;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +33,11 @@ public class summon extends AppCompatActivity {
     private int infiniteMode;
     private int freeMode;
     private int pickCount = 0;
+
+    ImageView image;
+
+    ObjectAnimator animator;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +93,7 @@ public class summon extends AppCompatActivity {
     }
 
     public void mine1(View view) throws IOException {
+        miningAnimation();
         roll(1);
     }
 
@@ -146,6 +156,28 @@ public class summon extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(PICKS_PREF, pickCount);
         editor.apply();
+    }
+
+    private void miningAnimation(){
+
+      //  Drawable wall = getDrawable(R.drawable.danny);
+       // Drawable wall = getDrawable(R.drawable.danny);
+        //image.setImageDrawable(wall);
+        //image = findViewById();
+
+
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animator = ObjectAnimator.ofFloat(image, "translationY", 500, 1000);
+                animator = ObjectAnimator.ofFloat(image, "translationX", 500, 1000);
+                animator.setDuration(2000);
+                animator.setInterpolator(new AccelerateDecelerateInterpolator());
+                animator.start();
+
+
+            }
+        });
     }
 
     public void backClick(View view) {

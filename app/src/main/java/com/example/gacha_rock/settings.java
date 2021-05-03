@@ -121,7 +121,6 @@ public class settings extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        updatePrefs();
         startActivity(new Intent(settings.this, MainActivity.class));
     }
 
@@ -158,7 +157,7 @@ public class settings extends AppCompatActivity {
 
     public void clearClick(View view) throws IOException {
         rocksOwned.clearAll();
-        featuredRockId = 0;
+        featuredRockId = 1;
         updatePrefs();
     }
 }

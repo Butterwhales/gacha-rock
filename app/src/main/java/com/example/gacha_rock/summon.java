@@ -93,7 +93,7 @@ public class summon extends AppCompatActivity {
     }
 
     public void mine1(View view) throws IOException {
-        miningAnimation();
+      //  miningAnimation();
         roll(1);
     }
 

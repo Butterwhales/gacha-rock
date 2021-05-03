@@ -47,6 +47,39 @@ public class inventory extends AppCompatActivity {
         buildGrid();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(FEATURED_ROCK_ID, featuredRockId);
+        editor.apply();
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(FEATURED_ROCK_ID, featuredRockId);
+        editor.apply();
+    }
+
+    @Override
+    public void onBackPressed() {
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(FEATURED_ROCK_ID, featuredRockId);
+        editor.apply();
+        try {
+            rocksOwned.writeAll();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        startActivity(new Intent(inventory.this, MainActivity.class));
+    }
+
     private void setup() throws IOException {
         InputStream stream = getResources().openRawResource(R.raw.rocks);
         BufferedReader br = new BufferedReader(new InputStreamReader(stream));
@@ -127,7 +160,7 @@ public class inventory extends AppCompatActivity {
     }
 
     public void backClick(View view) throws IOException {
-        startActivity(new Intent(inventory.this, MainActivity.class));
         rocksOwned.writeAll();
+        startActivity(new Intent(inventory.this, MainActivity.class));
     }
 }

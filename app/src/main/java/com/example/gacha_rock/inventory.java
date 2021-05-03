@@ -3,6 +3,7 @@ package com.example.gacha_rock;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -116,13 +117,17 @@ public class inventory extends AppCompatActivity {
     }
 
     private LinearLayout makeView(String rockName, String amount) {
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(android.R.attr.textColor, typedValue, true);
+        int color = typedValue.data;
+
         LinearLayout layout = new LinearLayout(this.getApplicationContext());
         layout.setOrientation(LinearLayout.VERTICAL);
         TextView textView = new TextView(this.getApplicationContext());
         textView.setText(String.format("%s", rockName));
         textView.setPadding(getResources().getDimensionPixelOffset(R.dimen.leftPadding), 0, getResources().getDimensionPixelSize(R.dimen.rightPadding), 0);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.grid_text_size));
-        textView.setTextColor(Color.WHITE);
+        textView.setTextColor(color);
         layout.addView(textView);
 
         ImageView imageView = new ImageView(this.getApplicationContext());
@@ -144,7 +149,7 @@ public class inventory extends AppCompatActivity {
         textView2.setText(String.format("%s", amount));
         textView2.setPadding(getResources().getDimensionPixelOffset(R.dimen.leftPadding), 0, getResources().getDimensionPixelSize(R.dimen.rightPadding), 0);
         textView2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.grid_text_size));
-        textView2.setTextColor(Color.WHITE);
+        textView2.setTextColor(color);
         layout.addView(textView2);
         layout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         layout.setHorizontalGravity(Gravity.CENTER_HORIZONTAL);
@@ -157,10 +162,5 @@ public class inventory extends AppCompatActivity {
         if (resourceId == 0)
             resourceId = getApplicationContext().getResources().getIdentifier("rock_chan_icon", "drawable", getApplicationContext().getPackageName());
         return resourceId;
-    }
-
-    public void backClick(View view) throws IOException {
-        rocksOwned.writeAll();
-        startActivity(new Intent(inventory.this, MainActivity.class));
     }
 }

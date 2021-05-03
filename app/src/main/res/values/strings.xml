@@ -37,5 +37,6 @@
     <string name="pick_count">[PICKS]</string>
     <string name="content_discription">Pick</string>
     <string name="gold">Gold:</string>
+    <string name="disable_ads">Disable Ads ON/OFF</string>
 
 </resources>

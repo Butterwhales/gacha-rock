@@ -4,7 +4,6 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -24,7 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class summon extends AppCompatActivity {
     private static final String PREFS_NAME = "com.example.gacha_rock.prefs";
     private static final String INFINITE_LOOT_PREF = "infiniteLootPref";
-    private static final String EVERTHING_IS_FREE_PREF = "everythingIsFreePref";
+    private static final String EVERYTHING_IS_FREE_PREF = "everythingIsFreePref";
     private static final String PICKS_PREF = "picksPref";
     public rockObject<String> rocksOwned = new rockObject<>();
     public rockObject<String> rocks = new rockObject<>();
@@ -45,7 +44,7 @@ public class summon extends AppCompatActivity {
         setContentView(R.layout.activity_summon);
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         infiniteMode = prefs.getInt(INFINITE_LOOT_PREF, infiniteMode);
-        freeMode = prefs.getInt(EVERTHING_IS_FREE_PREF, freeMode);
+        freeMode = prefs.getInt(EVERYTHING_IS_FREE_PREF, freeMode);
         pickCount = prefs.getInt(PICKS_PREF, pickCount);
         TextView pickText = findViewById(R.id.pickCountText);
         pickText.setText(String.valueOf(pickCount));

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -67,22 +68,21 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar xpBar;
 
     private int fingerCount;
-    private Random rand = new Random();
+    private final Random rand = new Random();
     private ImageView featuredRock;
     private int featuredRockId;
     private int devMode;
-    private int darkMode = 1;
+    private int darkMode;
     private int iterator;
     private int disableAds;
-    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         /** Reference to the clicks per second text viewc */
+        PreferenceManager.setDefaultValues(this, R.xml.preference, false);
         featuredRock = findViewById(R.id.featuredRock);
-
         // multitouch
         featuredRock.setOnTouchListener(fingerCounterListener);
         initializeItems();
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         if (disableAds == 0) {
             MobileAds.initialize(this, initializationStatus -> {
             });
-            mAdView = findViewById(R.id.adView);
+            AdView mAdView = findViewById(R.id.adView);
             AdRequest adRequest = new AdRequest.Builder().build();
             mAdView.loadAd(adRequest);
         }

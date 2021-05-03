@@ -69,6 +69,7 @@ public class inventory extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(FEATURED_ROCK_ID, featuredRockId);

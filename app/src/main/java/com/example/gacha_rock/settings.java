@@ -81,6 +81,7 @@ public class settings extends AppCompatActivity {
                     audioMode = 1;
                 } else if (id == R.id.darkSwitch) {
                     darkMode = 1;
+                    updatePrefs();
                     setDefaultNightMode(MODE_NIGHT_YES);
                 } else if (id == R.id.devSwitch) {
                     devMode = 1;
@@ -96,6 +97,7 @@ public class settings extends AppCompatActivity {
                     audioMode = 0;
                 } else if (id == R.id.darkSwitch) {
                     darkMode = 0;
+                    updatePrefs();
                     setDefaultNightMode(MODE_NIGHT_NO);
                 } else if (id == R.id.devSwitch) {
                     devMode = 0;
@@ -117,6 +119,7 @@ public class settings extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         updatePrefs();
         startActivity(new Intent(settings.this, MainActivity.class));
     }

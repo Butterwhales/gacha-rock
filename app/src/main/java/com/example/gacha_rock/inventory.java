@@ -131,11 +131,19 @@ public class inventory extends AppCompatActivity {
         textView.setTextColor(color);
         layout.addView(textView);
 
+        TextView textView2 = new TextView(this.getApplicationContext());
+        textView2.setText(String.format("%s", amount));
+        textView2.setPadding(getResources().getDimensionPixelOffset(R.dimen.leftPadding), 0, getResources().getDimensionPixelSize(R.dimen.rightPadding), 0);
+        textView2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.grid_text_size));
+        textView2.setTextColor(color);
+        layout.addView(textView2);
+
         ImageView imageView = new ImageView(this.getApplicationContext());
         Drawable rockDrawable = ResourcesCompat.getDrawable(getResources(), getDrawableFromId(rockName), getApplicationContext().getTheme());
         imageView.setImageDrawable(rockDrawable);
         imageView.setMaxHeight(100);
         imageView.setId(rocksOwned.getId(rockName));
+        imageView.setPadding(0, 0, 0, 100);
         imageView.setOnClickListener(v -> {
             Toast.makeText(getApplicationContext(), "Set favorite rock to " + rocks.getName(v.getId()), Toast.LENGTH_SHORT).show();
             featuredRockId = v.getId();
@@ -146,12 +154,6 @@ public class inventory extends AppCompatActivity {
         });
         layout.addView(imageView);
 
-        TextView textView2 = new TextView(this.getApplicationContext());
-        textView2.setText(String.format("%s", amount));
-        textView2.setPadding(getResources().getDimensionPixelOffset(R.dimen.leftPadding), 0, getResources().getDimensionPixelSize(R.dimen.rightPadding), 0);
-        textView2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.grid_text_size));
-        textView2.setTextColor(color);
-        layout.addView(textView2);
         layout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         layout.setHorizontalGravity(Gravity.CENTER_HORIZONTAL);
         return layout;

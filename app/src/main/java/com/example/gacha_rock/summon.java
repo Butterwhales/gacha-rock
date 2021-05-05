@@ -56,6 +56,12 @@ public class summon extends AppCompatActivity {
         rarity.addEntry("Rock", 0.1);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        updatePrefs();
+        startActivity(new Intent(summon.this, MainActivity.class));
+    }
 
     /**
      * The Plan:
@@ -177,9 +183,5 @@ public class summon extends AppCompatActivity {
 
             }
         });
-    }
-
-    public void backClick(View view) {
-        startActivity(new Intent(summon.this, MainActivity.class));
     }
 }

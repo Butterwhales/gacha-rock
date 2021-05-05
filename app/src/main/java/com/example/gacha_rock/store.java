@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +38,20 @@ public class store extends AppCompatActivity {
         comaFormat.setGroupingUsed(true);
         comaFormat.setGroupingSize(3);
         initializeItems();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        updatePrefs();
+        startActivity(new Intent(store.this, MainActivity.class));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initializeItems();
+        updateDisplay();
     }
 
     private void initializeItems() {
@@ -215,11 +230,6 @@ public class store extends AppCompatActivity {
             //disable ads
         }
         updateDisplay();
-    }
-
-    public void backClick(View view) {
-        updatePrefs();
-        startActivity(new Intent(store.this, MainActivity.class));
     }
 
     private void updatePrefs() {

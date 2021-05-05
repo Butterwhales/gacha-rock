@@ -209,10 +209,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-
         initializeItems();
         updateDisplay();
-
     }
     
     private void initializeItems() {

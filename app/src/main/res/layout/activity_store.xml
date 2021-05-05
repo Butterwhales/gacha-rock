@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".store">
 
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="backClick"
-        android:text="@string/back_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/goldText"
         android:layout_width="wrap_content"
@@ -50,9 +39,8 @@
 
     <ScrollView
         android:layout_width="416dp"
-        android:layout_height="618dp"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="70dp"
         android:foregroundGravity="center|center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -292,11 +280,11 @@
             </GridLayout>
 
             <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="3"
-            android:orientation="vertical"
-            android:rowCount="3">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:orientation="vertical"
+                android:rowCount="3">
 
                 <ImageButton
                     android:id="@+id/removeAdsButton"
@@ -309,7 +297,7 @@
                     android:tag="removeAdsButton"
                     tools:srcCompat="@drawable/no_ads" />
 
-        </GridLayout>
+            </GridLayout>
 
         </LinearLayout>
 

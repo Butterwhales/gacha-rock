@@ -78,18 +78,18 @@
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/cash_button1"
                     android:tag="cashButton1"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/cash_button1" />
 
                 <ImageButton
                     android:id="@+id/cashButton2"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/cash_button2"
                     android:tag="cashButton2"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/cash_button2" />
 
                 <ImageButton
                     android:id="@+id/cashButton3"
@@ -98,45 +98,45 @@
                     android:layout_columnSpan="3"
                     android:layout_columnWeight="1"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_long_icon"
+                    android:src="@drawable/cash_button3"
                     android:tag="cashButton3"
-                    tools:srcCompat="@drawable/store_frame_long_icon" />
+                    tools:srcCompat="@drawable/cash_button3" />
 
                 <ImageButton
                     android:id="@+id/cashButton4"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/cash_button4"
                     android:tag="cashButton4"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/cash_button4" />
 
                 <ImageButton
                     android:id="@+id/cashButton5"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/cash_button5"
                     android:tag="cashButton5"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/cash_button5" />
 
                 <ImageButton
                     android:id="@+id/cashButton6"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/cash_button6"
                     android:tag="cashButton6"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/cash_button6" />
 
                 <ImageButton
                     android:id="@+id/cashButton7"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/cash_button7"
                     android:tag="cashButton7"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/cash_button7" />
 
             </GridLayout>
 
@@ -154,18 +154,18 @@
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/pick_button1"
                     android:tag="pickButton1"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/pick_button1" />
 
                 <ImageButton
                     android:id="@+id/pickButton2"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/pick_button2"
                     android:tag="pickButton2"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/pick_button2" />
 
                 <ImageButton
                     android:id="@+id/pickButton3"
@@ -174,45 +174,45 @@
                     android:layout_columnSpan="3"
                     android:layout_columnWeight="1"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_long_icon"
+                    android:src="@drawable/pick_button3"
                     android:tag="pickButton3"
-                    tools:srcCompat="@drawable/store_frame_long_icon" />
+                    tools:srcCompat="@drawable/pick_button3" />
 
                 <ImageButton
                     android:id="@+id/pickButton4"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/pick_button4"
                     android:tag="pickButton4"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/pick_button4" />
 
                 <ImageButton
                     android:id="@+id/pickButton5"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/pick_button5"
                     android:tag="pickButton5"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/pick_button5" />
 
                 <ImageButton
                     android:id="@+id/pickButton6"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/pick_button6"
                     android:tag="pickButton6"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/pick_button6" />
 
                 <ImageButton
                     android:id="@+id/pickButton7"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/pick_button7"
                     android:tag="pickButton7"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/pick_button7" />
             </GridLayout>
 
             <GridLayout
@@ -229,18 +229,18 @@
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/gems_button1"
                     android:tag="gemsButton1"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/gems_button1" />
 
                 <ImageButton
                     android:id="@+id/gemsButton2"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/gems_button2"
                     android:tag="gemsButton2"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/gems_button2" />
 
                 <ImageButton
                     android:id="@+id/gemsButton3"
@@ -249,45 +249,45 @@
                     android:layout_columnSpan="3"
                     android:layout_columnWeight="1"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_long_icon"
+                    android:src="@drawable/gems_button3"
                     android:tag="gemsButton3"
-                    tools:srcCompat="@drawable/store_frame_long_icon" />
+                    tools:srcCompat="@drawable/gems_button3" />
 
                 <ImageButton
                     android:id="@+id/gemsButton4"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/gems_button4"
                     android:tag="gemsButton4"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/gems_button4" />
 
                 <ImageButton
                     android:id="@+id/gemsButton5"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/gems_button5"
                     android:tag="gemsButton5"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/gems_button5" />
 
                 <ImageButton
                     android:id="@+id/gemsButton6"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/gems_button6"
                     android:tag="gemsButton6"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/gems_button6" />
 
                 <ImageButton
                     android:id="@+id/gemsButton7"
                     android:layout_width="137dp"
                     android:layout_height="wrap_content"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_icon"
+                    android:src="@drawable/gems_button7"
                     android:tag="gemsButton7"
-                    tools:srcCompat="@drawable/store_frame_icon" />
+                    tools:srcCompat="@drawable/gems_button7" />
 
             </GridLayout>
 
@@ -305,9 +305,9 @@
                     android:layout_columnSpan="3"
                     android:layout_columnWeight="1"
                     android:onClick="buttonClick"
-                    android:src="@drawable/store_frame_long_icon"
+                    android:src="@drawable/no_ads"
                     android:tag="removeAdsButton"
-                    tools:srcCompat="@drawable/store_frame_long_icon" />
+                    tools:srcCompat="@drawable/no_ads" />
 
         </GridLayout>
 

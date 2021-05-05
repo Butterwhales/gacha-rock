@@ -11,7 +11,7 @@
 12 | Sparkle | 3 | 0.0 | 0.00  | 0 | Gabe found a geode at a summer camp when he was like 10. Its name is Sparkle | gabe
 13 | The Iron Lady | 3 | 0.0 | 0.00  | 0 | Ding dong the witch is dead | gabe
 14 | The Terraria Boulder | 3 | 0.0 | 0.00  | 0 | Being hit for 480 points of damage has never been so fun! | finished
-36 | Bernie Sand | 4 | 0.0 | 0.00  | 0 | I am once again in need of your financial support |
+36 | Bernie Sandstone | 4 | 0.0 | 0.00  | 0 | I am once again in need of your financial support |
 15 | Chris Rock | 4 | 0.0 | 0.00  | 0 | Good Comedian | finished
 16 | Danny | 4 | 0.0 | 0.10  | 1 | Danny Devitos face on a rock | finished
 17 | David Spade | 4 | 0.0 | 0.00  | 0 | Legendary Miner | finished

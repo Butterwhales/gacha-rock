@@ -14,9 +14,10 @@ import java.text.DecimalFormat;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class store extends AppCompatActivity {
-
+    /** The file address of the users stored preferences*/
     private static final String PREFS_NAME = "com.example.gacha_rock.prefs";
 
+    /** The names of the preferences used to store the users data*/
     private static final String GOLD_PREF = "goldPref";
     private static final String GEMS_PREF = "gemsPref";
     private static final String PICKS_PREF = "picksPref";

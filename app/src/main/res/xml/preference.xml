@@ -2,6 +2,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     android:key="applicationPreference" android:title="@string/config" >
     <ListPreference
-        android:key="disableAds"
+        android:key="darkMode"
         android:defaultValue="1"/>
 </PreferenceScreen>

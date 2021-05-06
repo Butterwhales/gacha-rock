@@ -73,6 +73,7 @@ public class settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        featuredRockId = prefs.getInt(FEATURED_ROCK_ID, featuredRockId);
         audioMode = prefs.getInt(AUDIO_PREF, audioMode);
         darkMode = prefs.getInt(DARK_PREF, darkMode);
         devMode = prefs.getInt(DEV_MODE_PREF, devMode);

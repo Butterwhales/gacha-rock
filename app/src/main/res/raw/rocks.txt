@@ -29,7 +29,7 @@
 26 | Rock Lesnar | 4 | 0.0 | 0.00  | 0 | Pro Rock Paper Scissors fighter | finished
 27 | Rocky Balboa | 4 | 0.0 | 0.00  | 0 | "YO ADRIEN" | mike
 28 | Shungite | 4 | 0.0 | 0.00  | 0 | stops 5G | finished
-29 | Sips.co Dirt | 4 | 0.0 | 0.00  | 0 | "Big money, big women, big fun!" | finished
+29 | Sips.co Dirt | 4 | 0.0 | 0.00  | 0 | "Big money, big fun!" | finished
 30 | Slate-X Rocket | 4 | 0.0 | 0.00  | 0 | WenHop |
 31 | The Nope Diamond | 4 | 0.0 | 0.00  | 0 | Nope | gabe
 32 | The Rock | 4 | 0.0 | 0.00  | 0 | Some asssembly required |

@@ -8,16 +8,20 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.text.DecimalFormat;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class store extends AppCompatActivity {
-    /** The file address of the users stored preferences*/
+    /**
+     * The file address of the users stored preferences
+     */
     private static final String PREFS_NAME = "com.example.gacha_rock.prefs";
 
-    /** The names of the preferences used to store the users data*/
+    /**
+     * The names of the preferences used to store the users data
+     */
     private static final String GOLD_PREF = "goldPref";
     private static final String GEMS_PREF = "gemsPref";
     private static final String PICKS_PREF = "picksPref";
@@ -77,93 +81,72 @@ public class store extends AppCompatActivity {
     public void buttonClick(View view) {
         String buttonName = String.valueOf(view.getTag());
         char character = buttonName.charAt(10);
+        AlertDialog confirmMenu = null;
         if (buttonName.contains("cash")) {
             switch (character) {
                 case '1':
-                    gemCount += 300;
-                    Toast.makeText(getApplicationContext(), "You Spent $0.99", Toast.LENGTH_SHORT).show();
+                    confirmMenu = createDialog("dollars", 0.99, 300, "gems");
                     break;
                 case '4':
-                    gemCount += 1800;
-                    Toast.makeText(getApplicationContext(), "You Spent $4.99", Toast.LENGTH_SHORT).show();
+                    confirmMenu = createDialog("dollars", 4.99, 1800, "gems");
                     break;
                 case '6':
-                    gemCount += 4200;
-                    Toast.makeText(getApplicationContext(), "You Spent $9.99", Toast.LENGTH_SHORT).show();
+                    confirmMenu = createDialog("dollars", 9.99, 4200, "gems");
                     break;
                 case '2':
-                    gemCount += 12345;
-                    Toast.makeText(getApplicationContext(), "You Spent $24.99", Toast.LENGTH_SHORT).show();
+                    confirmMenu = createDialog("dollars", 24.99, 12345, "gems");
                     break;
                 case '5':
-                    gemCount += 28000;
-                    Toast.makeText(getApplicationContext(), "You Spent $49.99", Toast.LENGTH_SHORT).show();
+                    confirmMenu = createDialog("dollars", 49.99, 28000, "gems");
                     break;
                 case '7':
-                    gemCount += 70000;
-                    Toast.makeText(getApplicationContext(), "You Spent $74.99", Toast.LENGTH_SHORT).show();
+                    confirmMenu = createDialog("dollars", 74.99, 70000, "gems");
                     break;
                 case '3':
-                    gemCount += 47000;
-                    Toast.makeText(getApplicationContext(), "You Spent $99.99", Toast.LENGTH_SHORT).show();
+                    confirmMenu = createDialog("dollars", 99.99, 47000, "gems");
                     break;
             }
-            Toast.makeText(getApplicationContext(), "Bought Gems", Toast.LENGTH_SHORT).show();
         } else if (buttonName.contains("pick")) {
             switch (character) {
                 case '1':
                     if (gemCount >= 1000) {
-                    pickCount += 1;
-                    gemCount -= 1000;
-                        Toast.makeText(getApplicationContext(), "Bought 1 Pick", Toast.LENGTH_SHORT).show();
+                        confirmMenu = createDialog("gems", (double) 1000, 1, "picks");
                     } else
                         Toast.makeText(getApplicationContext(), "Not Enough Gems, Need " + comaFormat.format(1000 - gemCount) + " Gems", Toast.LENGTH_SHORT).show();
                     break;
                 case '4':
                     if (gemCount >= 4875) {
-                    pickCount += 5;
-                    gemCount -= 4875;
-                        Toast.makeText(getApplicationContext(), "Bought 5 Picks", Toast.LENGTH_SHORT).show();
+                        confirmMenu = createDialog("gems", (double) 4875, 5, "picks");
                     } else
                         Toast.makeText(getApplicationContext(), "Not Enough Gems, Need " + comaFormat.format(4875 - gemCount) + " Gems", Toast.LENGTH_SHORT).show();
                     break;
                 case '6':
                     if (gemCount >= 9250) {
-                    pickCount += 10;
-                    gemCount -= 9250;
-                        Toast.makeText(getApplicationContext(), "Bought 10 Picks", Toast.LENGTH_SHORT).show();
+                        confirmMenu = createDialog("gems", (double) 9250, 10, "picks");
                     } else
                         Toast.makeText(getApplicationContext(), "Not Enough Gems, Need " + comaFormat.format(9250 - gemCount) + " Gems", Toast.LENGTH_SHORT).show();
                     break;
                 case '2':
                     if (gemCount >= 17000) {
-                    pickCount += 20;
-                    gemCount -= 17000;
-                        Toast.makeText(getApplicationContext(), "Bought 20 Picks", Toast.LENGTH_SHORT).show();
+                        confirmMenu = createDialog("gems", (double) 17000, 20, "picks");
                     } else
                         Toast.makeText(getApplicationContext(), "Not Enough Gems, Need " + comaFormat.format(17000 - gemCount) + " Gems", Toast.LENGTH_SHORT).show();
                     break;
                 case '5':
                     if (gemCount >= 37500) {
-                    pickCount += 50;
-                    gemCount -= 37500;
-                        Toast.makeText(getApplicationContext(), "Bought 50 Picks", Toast.LENGTH_SHORT).show();
+                        confirmMenu = createDialog("gems", (double) 37500, 50, "picks");
                     } else
                         Toast.makeText(getApplicationContext(), "Not Enough Gems, Need " + comaFormat.format(37500 - gemCount) + " Gems", Toast.LENGTH_SHORT).show();
                     break;
                 case '7':
                     if (gemCount >= 65000) {
-                        pickCount += 100;
-                        gemCount -= 65000;
-                        Toast.makeText(getApplicationContext(), "Bought 100 Picks", Toast.LENGTH_SHORT).show();
+                        confirmMenu = createDialog("gems", (double) 65000, 100, "picks");
                     } else
                         Toast.makeText(getApplicationContext(), "Not Enough Gems, Need " + comaFormat.format(65000 - gemCount) + " Gems", Toast.LENGTH_SHORT).show();
                     break;
                 case '3':
                     if (gemCount >= 105000) {
-                        pickCount += 200;
-                        gemCount -= 105000;
-                        Toast.makeText(getApplicationContext(), "Bought 200 Picks", Toast.LENGTH_SHORT).show();
+                        confirmMenu = createDialog("gems", (double) 105000, 200, "picks");
                     } else
                         Toast.makeText(getApplicationContext(), "Not Enough Gems, Need " + comaFormat.format(105000 - gemCount) + " Gems", Toast.LENGTH_SHORT).show();
                     break;
@@ -172,57 +155,43 @@ public class store extends AppCompatActivity {
             switch (character) {
                 case '1':
                     if (goldCount >= 12345) {
-                        gemCount += 1000;
-                        goldCount -= 12345;
-                        Toast.makeText(getApplicationContext(), "Bought 1,000 Gems", Toast.LENGTH_SHORT).show();
+                        confirmMenu = createDialog("gold", (double) 12345, 1000, "gems");
                     } else
                         Toast.makeText(getApplicationContext(), "Not Enough Gold, Need " + comaFormat.format(12345 - goldCount) + " Gold", Toast.LENGTH_SHORT).show();
                     break;
                 case '4':
                     if (goldCount >= 61725) {
-                        gemCount += 4875;
-                        goldCount -= 61725;
-                        Toast.makeText(getApplicationContext(), "Bought 4,875 Gems", Toast.LENGTH_SHORT).show();
+                        confirmMenu = createDialog("gold", (double) 61725, 4875, "gems");
                     } else
                         Toast.makeText(getApplicationContext(), "Not Enough Gold, Need " + comaFormat.format(61725 - goldCount) + " Gold", Toast.LENGTH_SHORT).show();
                     break;
                 case '6':
                     if (goldCount >= 123450) {
-                        gemCount += 9250;
-                        goldCount -= 123450;
-                        Toast.makeText(getApplicationContext(), "Bought 9,250 Gems", Toast.LENGTH_SHORT).show();
+                        confirmMenu = createDialog("gold", (double) 123450, 9250, "gems");
                     } else
                         Toast.makeText(getApplicationContext(), "Not Enough Gold, Need " + comaFormat.format(123450 - goldCount) + " Gold", Toast.LENGTH_SHORT).show();
                     break;
                 case '2':
                     if (goldCount >= 246900) {
-                        gemCount += 17000;
-                        goldCount -= 246900;
-                        Toast.makeText(getApplicationContext(), "Bought 17,000 Gems", Toast.LENGTH_SHORT).show();
+                        confirmMenu = createDialog("gold", (double) 246900, 17000, "gems");
                     } else
                         Toast.makeText(getApplicationContext(), "Not Enough Gold, Need " + comaFormat.format(246900 - goldCount) + " Gold", Toast.LENGTH_SHORT).show();
                     break;
                 case '5':
                     if (goldCount >= 617250) {
-                        gemCount += 37500;
-                        goldCount -= 617250;
-                        Toast.makeText(getApplicationContext(), "Bought 37,500 Gems", Toast.LENGTH_SHORT).show();
+                        confirmMenu = createDialog("gold", (double) 617250, 37500, "gems");
                     } else
                         Toast.makeText(getApplicationContext(), "Not Enough Gold, Need " + comaFormat.format(617250 - goldCount) + " Gold", Toast.LENGTH_SHORT).show();
                     break;
                 case '7':
                     if (goldCount >= 1234500) {
-                        gemCount += 65000;
-                        goldCount -= 1234500;
-                        Toast.makeText(getApplicationContext(), "Bought 65,000 Gems", Toast.LENGTH_SHORT).show();
+                        confirmMenu = createDialog("gold", (double) 1234500, 65000, "gems");
                     } else
                         Toast.makeText(getApplicationContext(), "Not Enough Gold, Need " + comaFormat.format(1234500 - goldCount) + " Gold", Toast.LENGTH_SHORT).show();
                     break;
                 case '3':
                     if (goldCount >= 2469000) {
-                        gemCount += 105000;
-                        goldCount -= 2469000;
-                        Toast.makeText(getApplicationContext(), "Bought 105,000 Gems", Toast.LENGTH_SHORT).show();
+                        confirmMenu = createDialog("gold", (double) 2469000, 105000, "gems");
                     } else
                         Toast.makeText(getApplicationContext(), "Not Enough Gold, Need " + comaFormat.format(2469000 - goldCount) + " Gold", Toast.LENGTH_SHORT).show();
                     break;
@@ -230,7 +199,48 @@ public class store extends AppCompatActivity {
         } else {
             //disable ads
         }
+        if (confirmMenu != null) {
+            confirmMenu.show();
+        }
         updateDisplay();
+    }
+
+    /**
+     * Adds rock to list
+     *
+     * @param purchaseMedium What you purchase with (0-2)
+     * @param purchaseAmount Cost
+     */
+
+    private AlertDialog createDialog(String purchaseMedium, Double purchaseAmount, int productAmount, String productMedium) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        String purchaseString = comaFormat.format((int) Math.round(purchaseAmount));
+        if (purchaseMedium == "dollars") purchaseString = "$" + purchaseAmount;
+        builder.setMessage("Confirm you want to spend " + purchaseString + " " + purchaseMedium + " for " + comaFormat.format(productAmount) + " " + productMedium)
+                .setTitle("Buy " + productMedium)
+                .setPositiveButton("Confirm", (dialog, id) -> {
+                    switch (purchaseMedium) {
+                        case "dollars":
+                            gemCount += productAmount;
+                            Toast.makeText(getApplicationContext(), "You Spent " + purchaseAmount, Toast.LENGTH_SHORT).show();
+                            break;
+                        case "gems":
+                            pickCount += productAmount;
+                            gemCount -= purchaseAmount;
+                            Toast.makeText(getApplicationContext(), "Bought " + productAmount + " Pick", Toast.LENGTH_SHORT).show();
+                            break;
+                        case "gold":
+                            gemCount += productAmount;
+                            goldCount -= purchaseAmount;
+                            Toast.makeText(getApplicationContext(), "Bought " + comaFormat.format(productAmount) + " Gems", Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+                })
+                .setNegativeButton("Cancel", (dialog, id) -> {
+                    // CANCEL
+                });
+        // Create the AlertDialog object and return it
+        return builder.create();
     }
 
     private void updatePrefs() {

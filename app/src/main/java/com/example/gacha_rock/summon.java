@@ -1,9 +1,13 @@
 package com.example.gacha_rock;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -17,8 +21,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.res.ResourcesCompat;
 
 public class summon extends AppCompatActivity {
     private static final String PREFS_NAME = "com.example.gacha_rock.prefs";
@@ -32,11 +40,6 @@ public class summon extends AppCompatActivity {
     private int infiniteMode;
     private int freeMode;
     private int pickCount = 0;
-
-    ImageView image;
-
-    ObjectAnimator animator;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +101,7 @@ public class summon extends AppCompatActivity {
     }
 
     public void mine1(View view) throws IOException {
-      //  miningAnimation();
+        //  miningAnimation();
         roll(1);
     }
 
@@ -138,11 +141,40 @@ public class summon extends AppCompatActivity {
 
             rarity.addEntry(String.valueOf(i), overallRarity);
         }
+        AnimatorSet set = new AnimatorSet();
+        List<Animator> animatorList = new ArrayList<>();
+        ConstraintLayout layout = findViewById(R.id.layout);
+
+        ImageView pickView = new ImageView(this.getApplicationContext());
+        Drawable pickDrawable = ResourcesCompat.getDrawable(getResources(), getApplicationContext().getResources().getIdentifier("summon_pick", "drawable", getApplicationContext().getPackageName()), getApplicationContext().getTheme());
+        pickView.setImageDrawable(pickDrawable);
+        pickView.setPadding(150, 170, 150, 0);
+        pickView.setVisibility(View.VISIBLE);
+        layout.addView(pickView);
+
+        ImageView bagBackView= new ImageView(this.getApplicationContext());
+        bagBackView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), getApplicationContext().getResources().getIdentifier("bag_back", "drawable", getApplicationContext().getPackageName()), getApplicationContext().getTheme()));
+        bagBackView.setPadding(100, 2100, 0, 0);
+        layout.addView(bagBackView);
+
         for (int i = 0; i < count; i++) {
             int rockId = Integer.parseInt(rarity.getRandom());
+            set = miningAnimation(rockId, animatorList, layout, pickView);
             //System.out.println("rock id: " + rockId + " rock name: " + rocks.getName(rockId) + " Count: " + count);
             rocksOwned.addEntry(rockId, rocks.getName(rockId), rocks.getRarity(rockId), rocks.getRarityOverall(rockId), rocks.getGemChance(rockId), rocks.getGemAmount(rockId), rocks.getDescription(rockId));
         }
+
+        ImageView mountainView = new ImageView(this.getApplicationContext());
+        mountainView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), getApplicationContext().getResources().getIdentifier("mountain_side", "drawable", getApplicationContext().getPackageName()), getApplicationContext().getTheme()));
+        mountainView.setPadding(750, 700, 0, 0);
+        layout.addView(mountainView);
+
+        ImageView bagFrontView= new ImageView(this.getApplicationContext());
+        bagFrontView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), getApplicationContext().getResources().getIdentifier("bag_front", "drawable", getApplicationContext().getPackageName()), getApplicationContext().getTheme()));
+        bagFrontView.setPadding(100, 2100, 0, 0);
+        layout.addView(bagFrontView);
+        set.playSequentially(animatorList);
+        set.start();
         rocksOwned.writeAll();
         if (freeMode == 0 && infiniteMode == 0) {
             pickCount -= count;
@@ -163,25 +195,66 @@ public class summon extends AppCompatActivity {
         editor.apply();
     }
 
-    private void miningAnimation(){
+    private AnimatorSet miningAnimation(int id, List<Animator> animatorList, ConstraintLayout layout, ImageView pickView) {
+        ConstraintLayout constraintLayout = findViewById(R.id.summonLayout);
+        //constraintLayout.setVisibility(View.INVISIBLE);
 
-      //  Drawable wall = getDrawable(R.drawable.danny);
-       // Drawable wall = getDrawable(R.drawable.danny);
-        //image.setImageDrawable(wall);
-        //image = findViewById();
+        //layout.setVisibility(View.VISIBLE);
+        AnimatorSet set = new AnimatorSet();
 
+        ImageView imageView = new ImageView(this.getApplicationContext());
+        Drawable rockDrawable = ResourcesCompat.getDrawable(getResources(), getDrawableFromId(rocks.getName(id)), getApplicationContext().getTheme());
+        imageView.setImageDrawable(rockDrawable);
+        imageView.setMaxHeight(100);
+        imageView.setPadding(1000, 2300, 0, 0);
+        imageView.setVisibility(View.VISIBLE);
+        layout.addView(imageView);
 
-        image.setOnClickListener(new View.OnClickListener() {
+        for (int i = 0; i < 3; i++) {
+            animatorList.add(rotateImage(pickView, 0f, 60f, 180));
+            animatorList.add(rotateImage(pickView, 60f, 0f, 180));
+        }
+        animatorList.add(translateImage(imageView, "Y", 0, -1000, 0));
+        animatorList.add(translateImage(imageView, "X", -100, -500, 200));
+        animatorList.add(translateImage(imageView, "Y", -1000, 1250, 1000));
+
+        set.addListener(new AnimatorListenerAdapter() {
             @Override
-            public void onClick(View v) {
-                animator = ObjectAnimator.ofFloat(image, "translationY", 500, 1000);
-                animator = ObjectAnimator.ofFloat(image, "translationX", 500, 1000);
-                animator.setDuration(2000);
-                animator.setInterpolator(new AccelerateDecelerateInterpolator());
-                animator.start();
-
-
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                layout.setVisibility(View.INVISIBLE);
+                constraintLayout.setVisibility(View.VISIBLE);
+                layout.removeView(imageView);
+                layout.removeView(pickView);
+            }
+            public void onAnimationStart(Animator animation) {
+                super.onAnimationEnd(animation);
+                layout.setVisibility(View.VISIBLE);
+                constraintLayout.setVisibility(View.INVISIBLE);
+                imageView.setVisibility(View.VISIBLE);
+                pickView.setVisibility(View.VISIBLE);
             }
         });
+        return set;
+    }
+
+    public ObjectAnimator rotateImage(ImageView image, float start, float end, int duration) {
+        ObjectAnimator rotateAnimator = ObjectAnimator.ofFloat(image, "rotation", start, end).setDuration(duration);
+        rotateAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        return rotateAnimator;
+    }
+
+    public ObjectAnimator translateImage(ImageView image, String axis, float start, float end, int duration) {
+        ObjectAnimator animator = ObjectAnimator.ofFloat(image, "translation" + axis, start, end).setDuration(duration);
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
+        return animator;
+    }
+
+    public int getDrawableFromId(String id) {
+        String name = id.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "_").replaceAll("\"", "") + "_icon";
+        int resourceId = getApplicationContext().getResources().getIdentifier(name, "drawable", getApplicationContext().getPackageName());
+        if (resourceId == 0)
+            resourceId = getApplicationContext().getResources().getIdentifier("rock_chan_icon", "drawable", getApplicationContext().getPackageName());
+        return resourceId;
     }
 }

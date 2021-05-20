@@ -212,7 +212,7 @@ public class summon extends AppCompatActivity {
         if (count == 1)
             Toast.makeText(getApplicationContext(), "You mined " + count + " rock", Toast.LENGTH_SHORT).show();
         else
-            Toast.makeText(getApplicationContext(), "You mined " + count+1 + " rocks", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "You mined " + (count + 1) + " rocks", Toast.LENGTH_SHORT).show();
 
         updatePrefs();
     }

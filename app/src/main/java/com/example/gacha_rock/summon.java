@@ -46,6 +46,7 @@ public class summon extends AppCompatActivity {
     public rockObject<String> rocksOwned = new rockObject<>();
     public rockObject<String> rocks = new rockObject<>();
     weightedRandom<String> rarity = new weightedRandom<>();
+    weightedRandom<String> rarityLegendary = new weightedRandom<>();
 
     private int infiniteMode;
     private int freeMode;
@@ -69,7 +70,7 @@ public class summon extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        rarity.addEntry("Rock", 0.1);
+        //rarity.addEntry("Rock", 0.1);
     }
 
     @Override
@@ -148,6 +149,7 @@ public class summon extends AppCompatActivity {
                     break;
                 case 4:
                     overallRarity += 1.0;
+                    rarityLegendary.addEntry(String.valueOf(i), overallRarity);
                     break;
             }
 
@@ -173,6 +175,12 @@ public class summon extends AppCompatActivity {
         bagBackView.setPadding(100, 2100, 0, 0);
         layout.addView(bagBackView);
 
+        if (count == 10) {
+            count -= 1;
+            int rockId = Integer.parseInt(rarityLegendary.getRandom());
+            set = miningAnimation(rockId, animatorList, layout, pickView);
+            rocksOwned.addEntry(rockId, rocks.getName(rockId), rocks.getRarity(rockId), rocks.getRarityOverall(rockId), rocks.getGemChance(rockId), rocks.getGemAmount(rockId), rocks.getDescription(rockId));
+        }
         for (int i = 0; i < count; i++) {
             int rockId = Integer.parseInt(rarity.getRandom());
             set = miningAnimation(rockId, animatorList, layout, pickView);
@@ -189,7 +197,7 @@ public class summon extends AppCompatActivity {
         bagFrontView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), getApplicationContext().getResources().getIdentifier("bag_front", "drawable", getApplicationContext().getPackageName()), getApplicationContext().getTheme()));
         bagFrontView.setPadding(100, 2100, 0, 0);
         layout.addView(bagFrontView);
-        if (disableAnimations == 0){
+        if (disableAnimations == 0) {
             layout.setVisibility(View.VISIBLE);
             set.playSequentially(animatorList);
             set.start();
@@ -262,13 +270,13 @@ public class summon extends AppCompatActivity {
     }
 
     public ObjectAnimator rotateImage(ImageView image, float start, float end, int duration) {
-        ObjectAnimator rotateAnimator = ObjectAnimator.ofFloat(image, "rotation", start, end).setDuration(duration/fastAnimations);
+        ObjectAnimator rotateAnimator = ObjectAnimator.ofFloat(image, "rotation", start, end).setDuration(duration / fastAnimations);
         rotateAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
         return rotateAnimator;
     }
 
     public ObjectAnimator translateImage(ImageView image, String axis, float start, float end, int duration) {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(image, "translation" + axis, start, end).setDuration(duration/fastAnimations);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(image, "translation" + axis, start, end).setDuration(duration / fastAnimations);
         animator.setInterpolator(new AccelerateDecelerateInterpolator());
         return animator;
     }

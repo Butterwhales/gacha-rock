@@ -100,10 +100,10 @@ public class store extends AppCompatActivity {
                     confirmMenu = createDialog("dollars", 49.99, 28000, "gems");
                     break;
                 case '7':
-                    confirmMenu = createDialog("dollars", 74.99, 70000, "gems");
+                    confirmMenu = createDialog("dollars", 74.99, 47000, "gems");
                     break;
                 case '3':
-                    confirmMenu = createDialog("dollars", 99.99, 47000, "gems");
+                    confirmMenu = createDialog("dollars", 99.99, 70000, "gems");
                     break;
             }
         } else if (buttonName.contains("pick")) {

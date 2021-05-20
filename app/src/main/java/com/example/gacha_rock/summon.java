@@ -33,6 +33,16 @@ public class summon extends AppCompatActivity {
     private static final String INFINITE_LOOT_PREF = "infiniteLootPref";
     private static final String EVERYTHING_IS_FREE_PREF = "everythingIsFreePref";
     private static final String PICKS_PREF = "picksPref";
+    private static final String FAST_ANIMATIONS = "fastAnimations";
+    private static final String DISABLE_ANIMATIONS = "disableAnimations";
+    /**
+     * If (1): fast animations is enabled. If (0): fast animations is disabled.
+     */
+    private int fastAnimations = 1;
+    /**
+     * If (1): disable animations is enabled. If (0): disable animations is disabled.
+     */
+    private int disableAnimations;
     public rockObject<String> rocksOwned = new rockObject<>();
     public rockObject<String> rocks = new rockObject<>();
     weightedRandom<String> rarity = new weightedRandom<>();
@@ -49,6 +59,9 @@ public class summon extends AppCompatActivity {
         infiniteMode = prefs.getInt(INFINITE_LOOT_PREF, infiniteMode);
         freeMode = prefs.getInt(EVERYTHING_IS_FREE_PREF, freeMode);
         pickCount = prefs.getInt(PICKS_PREF, pickCount);
+        disableAnimations = prefs.getInt(DISABLE_ANIMATIONS, disableAnimations);
+        fastAnimations = prefs.getInt(FAST_ANIMATIONS, fastAnimations);
+        if (fastAnimations == 0) fastAnimations = 1;
         TextView pickText = findViewById(R.id.pickCountText);
         pickText.setText(String.valueOf(pickCount));
         try {
@@ -101,7 +114,6 @@ public class summon extends AppCompatActivity {
     }
 
     public void mine1(View view) throws IOException {
-        //  miningAnimation();
         roll(1);
     }
 
@@ -144,15 +156,19 @@ public class summon extends AppCompatActivity {
         AnimatorSet set = new AnimatorSet();
         List<Animator> animatorList = new ArrayList<>();
         ConstraintLayout layout = findViewById(R.id.layout);
+        layout.setVisibility(View.INVISIBLE);
+
+//        TextView rockName = new TextView(this.getApplicationContext());
+//        rockName.setPadding(150, 50, 150, 0);
+//        layout.addView(rockName);
 
         ImageView pickView = new ImageView(this.getApplicationContext());
         Drawable pickDrawable = ResourcesCompat.getDrawable(getResources(), getApplicationContext().getResources().getIdentifier("summon_pick", "drawable", getApplicationContext().getPackageName()), getApplicationContext().getTheme());
         pickView.setImageDrawable(pickDrawable);
         pickView.setPadding(150, 170, 150, 0);
-        pickView.setVisibility(View.VISIBLE);
         layout.addView(pickView);
 
-        ImageView bagBackView= new ImageView(this.getApplicationContext());
+        ImageView bagBackView = new ImageView(this.getApplicationContext());
         bagBackView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), getApplicationContext().getResources().getIdentifier("bag_back", "drawable", getApplicationContext().getPackageName()), getApplicationContext().getTheme()));
         bagBackView.setPadding(100, 2100, 0, 0);
         layout.addView(bagBackView);
@@ -169,12 +185,17 @@ public class summon extends AppCompatActivity {
         mountainView.setPadding(750, 700, 0, 0);
         layout.addView(mountainView);
 
-        ImageView bagFrontView= new ImageView(this.getApplicationContext());
+        ImageView bagFrontView = new ImageView(this.getApplicationContext());
         bagFrontView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), getApplicationContext().getResources().getIdentifier("bag_front", "drawable", getApplicationContext().getPackageName()), getApplicationContext().getTheme()));
         bagFrontView.setPadding(100, 2100, 0, 0);
         layout.addView(bagFrontView);
-        set.playSequentially(animatorList);
-        set.start();
+        if (disableAnimations == 0){
+            layout.setVisibility(View.VISIBLE);
+            set.playSequentially(animatorList);
+            set.start();
+        }
+
+        // / fastAnimations
         rocksOwned.writeAll();
         if (freeMode == 0 && infiniteMode == 0) {
             pickCount -= count;
@@ -198,8 +219,6 @@ public class summon extends AppCompatActivity {
     private AnimatorSet miningAnimation(int id, List<Animator> animatorList, ConstraintLayout layout, ImageView pickView) {
         ConstraintLayout constraintLayout = findViewById(R.id.summonLayout);
         //constraintLayout.setVisibility(View.INVISIBLE);
-
-        //layout.setVisibility(View.VISIBLE);
         AnimatorSet set = new AnimatorSet();
 
         ImageView imageView = new ImageView(this.getApplicationContext());
@@ -210,13 +229,16 @@ public class summon extends AppCompatActivity {
         imageView.setVisibility(View.VISIBLE);
         layout.addView(imageView);
 
-        for (int i = 0; i < 3; i++) {
+        int target = 3;
+        if (fastAnimations == 2) target = 1;
+
+        for (int i = 0; i < target; i++) {
             animatorList.add(rotateImage(pickView, 0f, 60f, 180));
             animatorList.add(rotateImage(pickView, 60f, 0f, 180));
         }
         animatorList.add(translateImage(imageView, "Y", 0, -1000, 0));
         animatorList.add(translateImage(imageView, "X", -100, -500, 200));
-        animatorList.add(translateImage(imageView, "Y", -1000, 1250, 1000));
+        animatorList.add(translateImage(imageView, "Y", -1000, 0, 500));
 
         set.addListener(new AnimatorListenerAdapter() {
             @Override
@@ -227,6 +249,7 @@ public class summon extends AppCompatActivity {
                 layout.removeView(imageView);
                 layout.removeView(pickView);
             }
+
             public void onAnimationStart(Animator animation) {
                 super.onAnimationEnd(animation);
                 layout.setVisibility(View.VISIBLE);
@@ -239,13 +262,13 @@ public class summon extends AppCompatActivity {
     }
 
     public ObjectAnimator rotateImage(ImageView image, float start, float end, int duration) {
-        ObjectAnimator rotateAnimator = ObjectAnimator.ofFloat(image, "rotation", start, end).setDuration(duration);
+        ObjectAnimator rotateAnimator = ObjectAnimator.ofFloat(image, "rotation", start, end).setDuration(duration/fastAnimations);
         rotateAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
         return rotateAnimator;
     }
 
     public ObjectAnimator translateImage(ImageView image, String axis, float start, float end, int duration) {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(image, "translation" + axis, start, end).setDuration(duration);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(image, "translation" + axis, start, end).setDuration(duration/fastAnimations);
         animator.setInterpolator(new AccelerateDecelerateInterpolator());
         return animator;
     }

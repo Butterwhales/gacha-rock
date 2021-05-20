@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,52 +19,87 @@ import java.util.Arrays;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
 import static androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode;
 
 public class settings extends AppCompatActivity {
-    /** Holds the ids for all of the switches on the page*/
-    private final ArrayList<Integer> ids = new ArrayList<>(Arrays.asList(R.id.audioSwitch, R.id.darkSwitch, R.id.devSwitch, R.id.infSwitch, R.id.everyFreeSwitch, R.id.disableAdsSwitch));
+    /**
+     * Holds the ids for all of the switches on the page
+     */
+    private final ArrayList<Integer> ids = new ArrayList<>(Arrays.asList(R.id.audioSwitch, R.id.darkSwitch, R.id.devSwitch, R.id.infSwitch, R.id.everyFreeSwitch, R.id.disableAdsSwitch, R.id.fastAnimationsSwitch, R.id.disableAnimationsSwitch));
     private final ArrayList<CompoundButton> switches = new ArrayList<>();
 
-    /** The file address of the users stored preferences*/
+    /**
+     * The file address of the users stored preferences
+     */
     private static final String PREFS_NAME = "com.example.gacha_rock.prefs";
 
-    /** The names of the preferences used to store the users data*/
+    /**
+     * The names of the preferences used to store the users data
+     */
     private static final String FEATURED_ROCK_ID = "featuredRockId";
     private static final String AUDIO_PREF = "audioPref";
     private static final String DARK_PREF = "darkPref";
+    private static final String FAST_ANIMATIONS = "fastAnimations";
+    private static final String DISABLE_ANIMATIONS = "disableAnimations";
     private static final String DEV_MODE_PREF = "devModePref";
     private static final String INFINITE_LOOT_PREF = "infiniteLootPref";
     private static final String EVERYTHING_IS_FREE_PREF = "everythingIsFreePref";
     private static final String DISABLE_ADS = "disableAds";
 
-    /** Used to hold all of the rocks that the user owns*/
+    /**
+     * Used to hold all of the rocks that the user owns
+     */
     public rockObject<String> rocksOwned = new rockObject<>();
-    /** Used to hold every single rock in the game*/
+    /**
+     * Used to hold every single rock in the game
+     */
     public rockObject<String> rocks = new rockObject<>();
 
-    /** Turns audio on and off
-     * Currently does nothing*/
+    /**
+     * Turns audio on and off
+     * Currently does nothing
+     */
     private int audioMode;
-    /**The id of the users featured rock*/
+    /**
+     * The id of the users featured rock
+     */
     private int featuredRockId;
-    /** If (1): developer mode is enabled. If (0): developer mode is disabled.*/
+    /**
+     * If (1): developer mode is enabled. If (0): developer mode is disabled.
+     */
     private int devMode;
-    /** If (1): dark mode is enabled. If (0): dark is disabled.*/
+    /**
+     * If (1): dark mode is enabled. If (0): dark is disabled.
+     */
     private int darkMode;
-    /** If (1): ads are disabled. If (0): ads are enabled.*/
+    /**
+     * If (1): fast animations is enabled. If (0): fast animations is disabled.
+     */
+    private int fastAnimations;
+    /**
+     * If (1): disable animations is enabled. If (0): disable animations is disabled.
+     */
+    private int disableAnimations;
+    /**
+     * If (1): ads are disabled. If (0): ads are enabled.
+     */
     private int disableAds;
-    /** If (1): Infinite items are enabled. If (0): Infinite items are disabled.
-     * Makes summoning free*/
+    /**
+     * If (1): Infinite items are enabled. If (0): Infinite items are disabled.
+     * Makes summoning free
+     */
     private int infiniteMode;
-    /** If (1): Free mode is enabled. If (0): Free mode is disabled.
-     * Makes all items in the store free*/
+    /**
+     * If (1): Free mode is enabled. If (0): Free mode is disabled.
+     * Makes all items in the store free
+     */
     private int freeMode;
 
-    /** The ad displayed at the bottom of the page */
+    /**
+     * The ad displayed at the bottom of the page
+     */
     private AdView mAdView;
 
     @Override
@@ -80,6 +114,9 @@ public class settings extends AppCompatActivity {
         infiniteMode = prefs.getInt(INFINITE_LOOT_PREF, infiniteMode);
         freeMode = prefs.getInt(EVERYTHING_IS_FREE_PREF, freeMode);
         disableAds = prefs.getInt(DISABLE_ADS, disableAds);
+        disableAnimations = prefs.getInt(DISABLE_ANIMATIONS, disableAnimations);
+        fastAnimations = prefs.getInt(FAST_ANIMATIONS, fastAnimations);
+
 
         if (disableAds == 0) {
             MobileAds.initialize(this, initializationStatus -> {
@@ -97,6 +134,8 @@ public class settings extends AppCompatActivity {
         if (infiniteMode == 1) switches.get(3).setChecked(true);
         if (freeMode == 1) switches.get(4).setChecked(true);
         if (disableAds == 1) switches.get(5).setChecked(true);
+        if (fastAnimations == 2) switches.get(6).setChecked(true);
+        if (disableAnimations == 1) switches.get(7).setChecked(true);
         switches.forEach(switchThing -> switchThing.setOnCheckedChangeListener((buttonView, isChecked) -> {
             int id = buttonView.getId();      //I would use a switch statement but that provides a warning
             if (isChecked) {
@@ -114,6 +153,10 @@ public class settings extends AppCompatActivity {
                     freeMode = 1;
                 } else if (id == R.id.disableAdsSwitch) {
                     disableAds = 1;
+                } else if (id == R.id.disableAnimationsSwitch) {
+                    disableAnimations = 1;
+                } else if (id == R.id.fastAnimationsSwitch) {
+                    fastAnimations = 2;
                 }
             } else {
                 if (id == R.id.audioSwitch) {
@@ -132,6 +175,10 @@ public class settings extends AppCompatActivity {
                     freeMode = 0;
                 } else if (id == R.id.disableAdsSwitch) {
                     disableAds = 0;
+                } else if (id == R.id.disableAnimationsSwitch) {
+                    disableAnimations = 0;
+                } else if (id == R.id.fastAnimationsSwitch) {
+                    fastAnimations = 1;
                 }
             }
             updatePrefs();
@@ -159,6 +206,8 @@ public class settings extends AppCompatActivity {
         editor.putInt(EVERYTHING_IS_FREE_PREF, freeMode);
         editor.putInt(FEATURED_ROCK_ID, featuredRockId);
         editor.putInt(DISABLE_ADS, disableAds);
+        editor.putInt(DISABLE_ANIMATIONS, disableAnimations);
+        editor.putInt(FAST_ANIMATIONS, fastAnimations);
         editor.apply();
     }
 
@@ -187,6 +236,7 @@ public class settings extends AppCompatActivity {
 
     /**
      * Clears the users owned rocks
+     *
      * @param view
      * @throws IOException
      */

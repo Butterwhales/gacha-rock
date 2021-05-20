@@ -125,7 +125,8 @@ public class settings extends AppCompatActivity {
             AdRequest adRequest = new AdRequest.Builder().build();
             mAdView.loadAd(adRequest);
         }
-
+        findViewById(R.id.audioSwitch).setVisibility(View.INVISIBLE);
+        findViewById(R.id.audioText).setVisibility(View.INVISIBLE);
 
         ids.forEach(mySwitch -> switches.add(findViewById(mySwitch)));
         if (audioMode == 1) switches.get(0).setChecked(true);

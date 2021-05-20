@@ -197,7 +197,7 @@ public class store extends AppCompatActivity {
                     break;
             }
         } else {
-            //disable ads
+            Toast.makeText(getApplicationContext(), "Hahaha you thought you could disable ads!", Toast.LENGTH_SHORT).show();
         }
         if (confirmMenu != null) {
             confirmMenu.show();

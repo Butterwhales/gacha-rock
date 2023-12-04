@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +33,8 @@ public class inventory extends AppCompatActivity {
     private static final String FEATURED_ROCK_ID = "featuredRockId";
     public rockObject<String> rocksOwned = new rockObject<>();
     public rockObject<String> rocks = new rockObject<>();
+    /**The users featured rock*/
+    private ImageView featuredRock;
     private int featuredRockId;
 
     @Override
@@ -39,7 +42,9 @@ public class inventory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+
         featuredRockId = prefs.getInt(FEATURED_ROCK_ID, featuredRockId);
+        featuredRock = findViewById(R.id.featuredRock);
         try {
             setup();
         } catch (IOException e) {
@@ -109,8 +114,10 @@ public class inventory extends AppCompatActivity {
             rocksOwned.addEntry(e, rocks.getName(e), rocks.getRarity(e), rocks.getRarityOverall(e), rocks.getGemChance(e), rocks.getGemAmount(e), rocks.getDescription(e));
         }
         br.close();
+        Drawable rockDrawable = ResourcesCompat.getDrawable(getResources(), getDrawableFromId(rocks.getName(featuredRockId)), getApplicationContext().getTheme());
+        featuredRock.setImageDrawable(rockDrawable);
     }
-
+    //TODO Fix the rocks going off the edge of the right side of the screen
     private void buildGrid() {
         GridLayout grid = findViewById(R.id.grid);
         ArrayList<Integer> ids = rocksOwned.getAllRocksIds();
@@ -145,12 +152,15 @@ public class inventory extends AppCompatActivity {
         imageView.setId(rocksOwned.getId(rockName));
         imageView.setPadding(0, 0, 0, 100);
         imageView.setOnClickListener(v -> {
-            Toast.makeText(getApplicationContext(), "Set favorite rock to " + rocks.getName(v.getId()), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "Set favorite rock to " + rocks.getName(v.getId()), Toast.LENGTH_SHORT).show();
+            //TODO If you click the button multiple it doesnt cancel out previous toasts meaning if you spam it the toast just keep popping up
+            Toast.makeText(getApplicationContext(), "" + rocks.getDescription(v.getId()), Toast.LENGTH_SHORT).show();
             featuredRockId = v.getId();
             SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
             editor.putInt(FEATURED_ROCK_ID, featuredRockId);
             editor.apply();
+            updateDisplay();
         });
         layout.addView(imageView);
 
@@ -165,5 +175,13 @@ public class inventory extends AppCompatActivity {
         if (resourceId == 0)
             resourceId = getApplicationContext().getResources().getIdentifier("rock_chan_icon", "drawable", getApplicationContext().getPackageName());
         return resourceId;
+    }
+
+    /**
+     * Updates the displayed rock.
+     */
+    private void updateDisplay() {
+        Drawable rockDrawable = ResourcesCompat.getDrawable(getResources(), getDrawableFromId(rocks.getName(featuredRockId)), getApplicationContext().getTheme());
+        featuredRock.setImageDrawable(rockDrawable);
     }
 }

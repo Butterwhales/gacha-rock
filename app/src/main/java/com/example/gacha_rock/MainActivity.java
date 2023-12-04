@@ -6,9 +6,12 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +29,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
+import java.util.Objects;
 import java.util.Random;
 
 import androidx.annotation.NonNull;
@@ -92,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     private int featuredRockId;
     /** If (1): developer mode is enabled. If (0): developer mode is disabled.*/
     private int devMode;
-    /** If (1): dark mode is enabled. If (0): dark is disabled.*/
+    /** If (1): dark mode is enabled. If (0): dark mode is disabled.*/
     private int darkMode;
     /** If (1): ads are disabled. If (0): ads are enabled.*/
     private int disableAds;
@@ -320,7 +324,7 @@ public class MainActivity extends AppCompatActivity {
         if (resourceId == 0) {
             name = name + "_icon";
             resourceId = getApplicationContext().getResources().getIdentifier(name, "drawable", getApplicationContext().getPackageName());
-            if (resourceId == 0)
+            if (resourceId == 0) //Pretty sure this does nothing
                 resourceId = getApplicationContext().getResources().getIdentifier("rock_chan", "drawable", getApplicationContext().getPackageName());
         }
         return resourceId;
@@ -361,11 +365,12 @@ public class MainActivity extends AppCompatActivity {
      * Opens the inventory page
      * @param view
      */
+    /*
     public void inventoryClick(View view) {
         updatePrefs();
         startActivity(new Intent(MainActivity.this, inventory.class));
     }
-
+    */
     /**
      * Opens the store page
      * @param view
@@ -379,6 +384,7 @@ public class MainActivity extends AppCompatActivity {
      * Opens the summon page
      * @param view
      */
+    /*
     public void summonsClick(View view) {
         updatePrefs();
         startActivity(new Intent(MainActivity.this, summon.class));
@@ -388,8 +394,45 @@ public class MainActivity extends AppCompatActivity {
      * Opens the settings page
      * @param view
      */
+    /*
     public void settingsClick(View view) {
         updatePrefs();
         startActivity(new Intent(MainActivity.this, settings.class));
+    }
+    */
+    /**
+     * Opens the Pop up menu page
+     * @param view
+     */
+    public void popUpMenuClick(View view) {
+        updatePrefs();
+        Button popUpMenuButton = findViewById(R.id.popUpMenuButton);
+
+        PopupMenu popupMenu = new PopupMenu(MainActivity.this, popUpMenuButton);
+
+        // Inflating popup menu from popup_menu.xml file
+        popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                // Toast message on menu item clicked
+                if(Objects.requireNonNull(menuItem.getTitle()).toString().equals("Collection")){
+                    startActivity(new Intent(MainActivity.this, inventory.class));
+                } else if(menuItem.getTitle().toString().equals("Stats")){
+                    return true;
+                } else if(menuItem.getTitle().toString().equals("Settings")){
+                    startActivity(new Intent(MainActivity.this, settings.class));
+                } else if(menuItem.getTitle().toString().equals("Summons")){
+                    startActivity(new Intent(MainActivity.this, summon.class));
+                } else if(menuItem.getTitle().toString().equals("Store")){
+                    startActivity(new Intent(MainActivity.this, store.class));
+                } else{
+                    return true;
+                }
+                return true;
+            }
+        });
+        // Showing the popup menu
+        popupMenu.show();
     }
 }

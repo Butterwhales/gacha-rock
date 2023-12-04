@@ -14,4 +14,9 @@
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/white</item>
     </style>
+    <style name="Button.Store" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@color/gold</item>
+        <item name="background">@color/gold</item>
+        <item name="backgroundTint">@color/gold</item>
+    </style>
 </resources>

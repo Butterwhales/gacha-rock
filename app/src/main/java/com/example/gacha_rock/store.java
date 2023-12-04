@@ -204,7 +204,7 @@ public class store extends AppCompatActivity {
         }
         updateDisplay();
     }
-
+//TODO: Gems doesn't visually update when you buy something until you leave the page
     /**
      * Adds rock to list
      *

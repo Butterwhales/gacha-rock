@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/collection"
+        android:title="Collection" />
+
+    <item
+        android:id="@+id/stats"
+        android:title="Stats" />
+
+    <item
+        android:id="@+id/settings"
+        android:title="Settings" />
+
+    <item
+        android:id="@+id/summons"
+        android:title="Summons"
+        />
+
+    <item
+        android:id="@+id/store"
+        android:title="Store" />
+</menu>

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
@@ -131,26 +133,29 @@ public class inventory extends AppCompatActivity {
 
         LinearLayout layout = new LinearLayout(this.getApplicationContext());
         layout.setOrientation(LinearLayout.VERTICAL);
+
         TextView textView = new TextView(this.getApplicationContext());
         textView.setText(String.format("%s", rockName));
         textView.setPadding(getResources().getDimensionPixelOffset(R.dimen.leftPadding), 0, getResources().getDimensionPixelSize(R.dimen.rightPadding), 0);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.grid_text_size));
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.grid_text_size)*2);
         textView.setTextColor(color);
+        textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         layout.addView(textView);
 
         TextView textView2 = new TextView(this.getApplicationContext());
-        textView2.setText(String.format("%s", amount));
+        textView2.setText(String.format("%sx", amount));
         textView2.setPadding(getResources().getDimensionPixelOffset(R.dimen.leftPadding), 0, getResources().getDimensionPixelSize(R.dimen.rightPadding), 0);
-        textView2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.grid_text_size));
+        textView2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.grid_text_size)*2);
         textView2.setTextColor(color);
         layout.addView(textView2);
 
         ImageView imageView = new ImageView(this.getApplicationContext());
         Drawable rockDrawable = ResourcesCompat.getDrawable(getResources(), getDrawableFromId(rockName), getApplicationContext().getTheme());
         imageView.setImageDrawable(rockDrawable);
-        imageView.setMaxHeight(100);
+        imageView.setMaxHeight(90);
         imageView.setId(rocksOwned.getId(rockName));
-        imageView.setPadding(0, 0, 0, 100);
+        ViewGroup.LayoutParams vg = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
+        imageView.setLayoutParams(vg);
         imageView.setOnClickListener(v -> {
             //Toast.makeText(getApplicationContext(), "Set favorite rock to " + rocks.getName(v.getId()), Toast.LENGTH_SHORT).show();
             //TODO If you click the button multiple it doesnt cancel out previous toasts meaning if you spam it the toast just keep popping up
@@ -163,9 +168,12 @@ public class inventory extends AppCompatActivity {
             updateDisplay();
         });
         layout.addView(imageView);
-
-        layout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        layout.setHorizontalGravity(Gravity.CENTER_HORIZONTAL);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(500, 700, 1);
+        lp.setMargins(10,10,10,10);
+        layout.setBackgroundColor(getResources().getColor(R.color.grey));
+        layout.setPadding(0, 3, 0, 0);
+        layout.setLayoutParams(lp);
+        layout.setHorizontalGravity(Gravity.FILL_HORIZONTAL);
         return layout;
     }
 

@@ -31,5 +31,7 @@
 30 | Shungite | 4 | 0.0 | 0.01  | 2 | stops 5G | finished
 31 | Sips.co Dirt | 4 | 0.0 | 0.01  | 2 | "Big money, big fun!" | finished
 32 | SlateX Rocket | 4 | 0.0 | 0.01  | 2 | WenHop | finished
-33 | The Nope Diamond | 4 | 0.0 | 0.01  | 2 | Nope | finished
+33 | The Nope Diamond | 4 | 0.0 | 0.01 | 2 | Nope | finished
 34 | The Rock | 4 | -0.5 | 0.05  | 2 | Some asssembly required | finished
+35 | Crag | 4 | -0.5 | 0.01  | 2 | He do be sleepin | finished
+36 | Iraq | 4 | -0.5 | 0.01  | 2 | War. War never Changes | finished

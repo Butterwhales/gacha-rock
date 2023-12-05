@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gold">#B89E1D</color>
     <color name="opaque_purple">#FF6200EE</color>
+    <color name="grey">#222222</color>
 </resources>

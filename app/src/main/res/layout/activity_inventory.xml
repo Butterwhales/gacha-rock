@@ -23,7 +23,8 @@
             android:id="@+id/grid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:columnCount="3"
+            android:layout_gravity="fill_horizontal"
+            app:columnCount="2"
             app:rowOrderPreserved="false" />
     </ScrollView>
 

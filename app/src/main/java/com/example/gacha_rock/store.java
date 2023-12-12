@@ -240,7 +240,33 @@ public class store extends AppCompatActivity {
                     // CANCEL
                 });
         // Create the AlertDialog object and return it
-        return builder.create();
+                // Create the AlertDialog object and return it
+        dialog = builder.create();
+
+	    dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+	    @Override
+	    public void onShow(final DialogInterface dialog) {
+	      Button negativeButton = ((AlertDialog)dialog).getButton(DialogInterface.BUTTON_NEGATIVE);
+	      Button positiveButton = ((AlertDialog)dialog).getButton(DialogInterface.BUTTON_POSITIVE);
+	
+	      // this not working because multiplying white background (e.g. Holo Light) has no effect
+	      //negativeButton.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+	
+	      final Drawable negativeButtonDrawable = getResources().getDrawable(R.drawable.alert_dialog_button_light_green);
+	      final Drawable positiveButtonDrawable = getResources().getDrawable(R.drawable.alert_dialog_button_light_red);
+	      if (Build.VERSION.SDK_INT >= 16) {
+	        negativeButton.setBackground(negativeButtonDrawable);
+	        positiveButton.setBackground(positiveButtonDrawable);
+	      } else {
+	        negativeButton.setBackgroundDrawable(negativeButtonDrawable);
+	        positiveButton.setBackgroundDrawable(positiveButtonDrawable);
+	      }
+	
+	      negativeButton.invalidate();
+	      positiveButton.invalidate();
+	    }
+	  });
+      return dialog;
     }
 
     private void updatePrefs() {

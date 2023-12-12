@@ -202,6 +202,9 @@ public class store extends AppCompatActivity {
         if (confirmMenu != null) {
             confirmMenu.show();
         }
+
+
+        updatePrefs();
         updateDisplay();
     }
 //TODO: Gems doesn't visually update when you buy something until you leave the page

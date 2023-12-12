@@ -35,3 +35,4 @@
 34 | The Rock | 4 | -0.5 | 0.05  | 2 | Some asssembly required | finished
 35 | Crag | 4 | -0.5 | 0.1  | 2 | He do be sleepin | finished
 36 | Iraq | 4 | -0.5 | 0.01  | 2 | War. War never Changes | finished
+37 | Obama Prism | 4 | 0.0 | 0.01 | 2 | Mr.Obama Care

@@ -46,13 +46,14 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
-        android:layout_width="415dp"
+        android:layout_width="0dp"
         android:layout_height="106dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar"
